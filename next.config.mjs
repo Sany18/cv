@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/cv',
-  assetPrefix: '/cv/',
+  basePath: process.env.BASE_PATH ?? '/cv',
   output: 'export',
 };
 
