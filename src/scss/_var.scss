@@ -1,7 +1,25 @@
 :root {
   --border-radius: 0.5rem;
   --dark-gray: #202020;
-  --gray-1: #9f9f9f;
+  --gray: #9f9f9f;
   --gray-2: #606060;
   --light-gray: #dfdfdf;
+  --orange: #e78a3e;
 }
+
+.border-radius { border-radius: var(--border-radius); }
+
+.color-dark-gray { color: var(--dark-gray); }
+.bg-dark-gray { background: var(--dark-gray); }
+
+.color-gray { color: var(--gray); }
+.bg-gray { background: var(--gray); }
+
+.color-gray-2 { color: var(--gray-2); }
+.bg-gray-2 { background: var(--gray-2); }
+
+.color-light-gray { color: var(--light-gray); }
+.bg-light-gray { background: var(--light-gray); }
+
+.color-orange { color: var(--orange); }
+.bg-orange { background: var(--orange); }
