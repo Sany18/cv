@@ -1,0 +1,12 @@
+.home {
+  .profile-photo-container {
+    flex: 0 1 360px;
+
+    .profile-photo {
+      width: 100%;
+      height: auto;
+      border-radius: var(--border-radius);
+      box-shadow: -5px 5px var(--light-gray);
+    }
+  }
+}

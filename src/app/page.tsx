@@ -1,95 +1,55 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Image from 'next/image';
+
+import profilePhoto from '@/assets/images/profile-photo.webp';
+
+import './page.scss';
+import { Divider } from '@/components/divider/divider';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
+    <main className="p-2 pl-4 pr-4 home">
+      <div className="d-flex gap-1">
+        <div className="d-flex flex-2 flex-column">
+          <h1 className="bold mb-4">Tantsiura Olexandr</h1>
+
+          <div className="d-flex flex-column">
+            <div className="d-flex align-items-center">
+              <span className="material-symbols-outlined mr-1">
+                mail
+              </span>
+              parubok.sashko@gmail.com
+            </div>
+
+            <div className="d-flex align-items-center">
+              <span className="material-symbols-outlined mr-1">
+                call
+              </span>
+              +380633884959
+            </div>
+
+            <div className="d-flex align-items-center">
+              <span className="material-symbols-outlined mr-1">
+                location_on
+              </span>
+              Ukraine, Cherkasy
+            </div>
+          </div>
+        </div>
+
+        <div className="flex-1 d-flex justify-content-center">
+          <div className='profile-photo-container'>
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
               priority
-            />
-          </a>
+              className='profile-photo'
+              width={408}
+              height={414}
+              src={profilePhoto}
+              alt='Olexandr Tantsiura profile photo' />
+          </div>
         </div>
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <Divider className="mt-1 mb-2" />
     </main>
   );
 }
