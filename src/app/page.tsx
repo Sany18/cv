@@ -140,10 +140,10 @@ export default function Home() {
           <p>
             <b>Responsibility:</b> Design, develop and maintain web applications on Angular and React. Code review, conducting
             consultations, estimation of project development time etc. Communication with customer and team, daily\weekly
-            reports and meetings. Direct participation in
+            reports and meetings. Direct participation in project discussions and project&apos;s development way. Refactoring,
+            optimization, documentation covering.
           </p>
         </div>
-
 
         <div className='d-flex flex-column gap-1'>
           <h4>Full Stack Developer</h4>
