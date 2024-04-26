@@ -9,8 +9,9 @@ import './page.scss';
 export default function Home() {
   const skills = [
     'JavaScript', 'TypeScript', 'Angular', 'React', 'React Native', 'Expo', 'Three.js (3D)',
-    'Node.js', 'Express.js', 'WebRTC/WS', 'NGINX', 'Webpack', 'jQuery', 'Docker',
-    'Shell Script', 'RoR', 'Ruby', 'Jekyll', 'Git', 'GitLab CI/CD', 'Jest',
+    'Node.js', 'Express.js', 'WebRTC/WS', 'NGINX', 'Webpack',
+    'jQuery', 'Docker', 'Shell Script', 'RoR', 'Ruby', 'Jekyll', 'Git', 'GitLab CI/CD', 'Jest',
+    'Userscript/Tempermonkey/Chrome extensions', 'PWA'
   ];
 
   const dateNow = new Date().toISOString().split('T')[0];
