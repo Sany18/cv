@@ -42,6 +42,30 @@
 
 .underline { text-decoration: underline; }
 
+.grid-2 {
+  row-gap: 2rem;
+  display: grid;
+  column-gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  row-gap: 2rem;
+  display: grid;
+  column-gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media screen and (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
 // debug
 .bgr { background: red; }
 .bgb { background: blue; }
@@ -51,4 +75,18 @@
 
 @media screen and (max-width: 768px) {
   .flex-column-sm { flex-direction: column; }
+  .hide-sm { display: none; }
+  .show-sm { display: block; }
+}
+
+.show-print { display: none; }
+
+@media print {
+  .hide-print { display: none; }
+  .show-print { display: block; }
+  .flex-column-print { flex-direction: column; }
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
 }

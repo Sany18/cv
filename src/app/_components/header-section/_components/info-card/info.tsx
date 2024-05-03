@@ -1,6 +1,6 @@
 export const InfoCard = () => {
   return (
-    <div className='d-flex gap-2'>
+    <div className='d-flex gap-2 flex-column-sm flex-column-print'>
       <div className="d-flex flex-column mb-2">
         <div className="d-flex align-items-center">
           <span className="material-symbols-outlined mr-1">
