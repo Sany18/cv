@@ -10,7 +10,7 @@ export const ExperienceSection = () => {
           <h4>Software Development Engineer (Front-End)</h4>
           <i>SPD-Technology / Spector.AI</i>
           <b>
-            <Time time='2020-11' /> - <Time />
+            <Time time='2020-11' /> - <Time time='2024-10' />
           </b>
           <p>
             <b>Skills:</b> Angular • React • Three Js (3D) • Optimizing Performance • Software Deployment • SASS

@@ -16,8 +16,9 @@ export const EducationLanguagesSection = () => {
 
         <div className='d-flex flex-column gap-1'>
           <h3 className='color-gray-2'>Languages</h3>
-          <p>Ukrainian - Fluent</p>
-          <p>English - Intermediate (B1-B2)</p>
+          <p>Ukrainian - Native</p>
+          <p>English - Upper-Intermediate (B2)</p>
+          <p>Russian - prefer to avoid</p>
         </div>
       </div>
     </>

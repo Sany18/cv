@@ -11,7 +11,7 @@ export const SummaryCard = () => {
 
       <p>
         I`m experienced Web Developer for more then {getExperienceYears()} years. I have knowledge in developing, testing, debugging, optimization,
-        deployment and support of web applications. My journey started as full-stack developer but for the last 3 years I have
+        deployment and support of web applications. My journey started as full-stack developer but for the last {getExperienceYears() - 3} years I have
         preferred only front-end development.
       </p>
     </div>
