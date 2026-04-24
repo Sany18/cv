@@ -1,4 +1,5 @@
-import { Lang } from '@/i18n/translations';
+import type { Metadata } from 'next';
+import { Lang, translations } from '@/i18n/translations';
 import { LanguageProvider } from '@/context/language-context';
 import { LanguageSwitcher } from '@/components/language-switcher/language-switcher';
 import { Divider } from '@/components/divider/divider';
@@ -11,6 +12,14 @@ import '../page.scss';
 
 export function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'uk' }];
+}
+
+export async function generateMetadata({ params }: { params: { lang: Lang } }): Promise<Metadata> {
+  const t = translations[params.lang];
+  return {
+    title: `${t.header.name} — CV`,
+    description: `${t.header.name} — ${t.header.title} — CV`,
+  };
 }
 
 export default function Page({ params }: { params: { lang: Lang } }) {

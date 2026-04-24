@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import "./globals.scss";
 
 export const metadata: Metadata = {
-  title: "Olexandr Tantsiura CV",
-  description: "Olexandr Tantsiura -- Software Development Engineer (Front-End) -- CV",
+  title: "Tantsiura Olexandr — CV",
+  description: "Tantsiura Olexandr — Software Systems Engineer (Web / 3D) — CV",
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html>
       <body suppressHydrationWarning>{children}</body>
     </html>
   );
