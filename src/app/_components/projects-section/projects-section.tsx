@@ -1,96 +1,100 @@
+'use client';
+
+import { useLanguage } from '@/context/language-context';
+import { translations } from '@/i18n/translations';
 import { Time } from "@/components/time/time";
 
+const projectMeta = [
+  {
+    url: 'https://www.infracloud3d.com/en/',
+    skills: 'LuciadRIA • GIS • Point Clouds • 3D Tiles • Geo-reference Systems • TypeScript',
+    start: '2024-10',
+    end: undefined,
+  },
+  {
+    url: null,
+    skills: 'Angular • React • Three Js (3D) • Optimizing Performance • Software Deployment • SASS • GPU.js • OpenLayers • OpenCV.js',
+    start: '2021-07',
+    end: '2024-10',
+  },
+  {
+    url: 'https://www.instagram.com/frothcoffeeapp/?hl=en',
+    skills: 'Ruby on Rails • React • React Native • Webpack • CI/CD • Docker • Software Development',
+    start: '2020-02',
+    end: '2020-09',
+  },
+  {
+    url: null,
+    skills: 'Ruby on Rails • React • WebRTC/WS • CI/CD • Docker • Software Development',
+    start: '2019-08',
+    end: '2020-01',
+  },
+  {
+    url: null,
+    skills: 'jQuery • Parallax.js • CSS filters • Software Development',
+    start: '2019-06',
+    end: '2019-07',
+  },
+  {
+    url: 'https://alter-space.biz.ua/',
+    skills: 'ThreeJS (3d) • React • NodeJs/Express • WS • Webpack • JavaScript • CannonJS',
+    start: '2019-06',
+    end: '2019-07',
+    subprojects: [
+      { url: 'https://alter-space.biz.ua/tetris/', label: 'Classic Tetris' },
+      { url: 'https://alter-space.biz.ua/3d-shooter', label: '3D shooter playground (demo)' },
+      { url: 'https://sany18.github.io/note-keeper/', label: 'Note Keeper' },
+    ],
+  },
+];
+
+const projectNames = [
+  'InfraCloud',
+  'Spector AI (SPD Technology)',
+  'Froth',
+  'Clyste',
+  'Site of company Milestep',
+  'Alter space',
+];
+
 export const ProjectsSection = () => {
+  const { lang } = useLanguage();
+  const t = translations[lang].projects;
+
   return (
     <>
-      <h3 className='color-gray-2'>Projects</h3>
+      <h3 className='color-gray-2'>{t.heading}</h3>
 
       <div className='d-flex grid-3'>
-        <div className='d-flex flex-column gap-1'>
-          <h4>Spector AI (SPD Technology)</h4>
-          <b>
-            <Time time='2021-07' /> - <Time />
-          </b>
-          <p>
-            AI based patform for industrial asset inspection. My job is frontend side of application,
-            landing page and extension for DroneDeploy. Here I gained a lot of experience in supporting and developing
-            large applications and developing new solutions with various technologies.
-          </p>
-          <p>
-            <b>Skills:</b> Angular • React • Three Js (3D) • Optimizing Performance • Software Deployment • SASS • GPU.js •
-            OpenLayers • OpenCV.js
-          </p>
-        </div>
+        {t.items.map((item, i) => {
+          const meta = projectMeta[i];
+          const name = projectNames[i];
 
-        <div className='d-flex flex-column gap-1'>
-          <a href='https://www.instagram.com/frothcoffeeapp/?hl=en' target='_blank'>
-            <h4>Froth</h4>
-          </a>
+          return (
+            <div key={i} className='d-flex flex-column gap-1'>
+              {meta.url
+                ? <a href={meta.url} target='_blank'><h4>{name}</h4></a>
+                : <h4>{name}</h4>
+              }
 
-          <b>
-            <Time time='2020-02' /> - <Time time='2020-09' />
-          </b>
-          <p>
-            The application to ordering a cup of coffee from your smartphone for Cape Town.
-            Landing page, mobile app and server side-app. were developed by a small team of me and my colleague Dmitry.
-            Also we were responsible for the release on Play market and Apple store and support.
-          </p>
-          <p>
-            <b>Skills:</b> Ruby on Rails • React • React Native • Webpack • CI/CD • Docker • Software Development
-          </p>
-        </div>
+              {'subprojects' in meta && meta.subprojects && (
+                <>
+                  <h6>{t.subprojectsLabel}</h6>
+                  {meta.subprojects.map((sp) => (
+                    <a key={sp.url} href={sp.url} target='_blank'>{sp.label}</a>
+                  ))}
+                </>
+              )}
 
-        <div className='d-flex flex-column gap-1'>
-          <h4>Clyste</h4>
-          <b>
-            <Time time='2019-08' /> - <Time time='2020-01' />
-          </b>
-          <p>
-            Experimental social media platform. At that time, I set up video calls and chat in the platform.
-            Here I got experience with WS and WebRTC
-          </p>
-          <p>
-            <b>Skills:</b> Ruby on Rails • React • WebRTC/WS • CI/CD • Docker • Software Development
-          </p>
-        </div>
-
-        <div className='d-flex flex-column gap-1'>
-          <h4>Site of company Milestep</h4>
-          <b>
-            <Time time='2019-06' /> - <Time time='2019-07' />
-          </b>
-          <p>
-            With this project I was introduced to parallax.js, jQuery opportunities and css filters.
-            For me it was more like a techno demo then just a page. There were horisontal multi-layered parallax,
-            a lot of presize animated particles, cursor highlighted background and more.
-            First version of this site was the business card of the company in the first years of its life.
-          </p>
-          <p>
-            <b>Skills:</b> jQuery • Parallax.js • CSS filters • Software Development
-          </p>
-        </div>
-
-        <div className='d-flex flex-column gap-1'>
-          <a href='https://alter-space.biz.ua/' target='_blank'>
-            <h4>Alter space</h4>
-          </a>
-
-          <h6>Subprojects:</h6>
-          <a href='https://alter-space.biz.ua/tetris/' target='_blank'>Classic Tetris</a>
-          <a href='https://alter-space.biz.ua/3d-shooter' target='_blank'>3D shooter playground (demo)</a>
-
-          <b>
-            <Time time='2019-06' /> - <Time time='2019-07' />
-          </b>
-          <p>
-            Here I collect my web pet projects, which I wrote at various times out of curiosity.
-            This is what I was able to compile and run, so I won`t be surprised if something goes wrong
-          </p>
-          <p>
-            <b>Skills:</b> ThreeJS (3d) • React • NodeJs/Express • WS • Webpack • JavaScript • CannonJS
-          </p>
-        </div>
+              <b>
+                <Time time={meta.start} /> - {meta.end ? <Time time={meta.end} /> : <Time />}
+              </b>
+              <p>{item.description}</p>
+              <p><b>{t.skillsLabel}</b> {meta.skills}</p>
+            </div>
+          );
+        })}
       </div>
     </>
   );
-}
+};

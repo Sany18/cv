@@ -1,0 +1,25 @@
+.language-switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  display: flex;
+  gap: 0.25rem;
+
+  a {
+    border: 1px solid var(--gray);
+    border-radius: var(--border-radius);
+    color: var(--gray);
+    cursor: pointer;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    text-decoration: none;
+    transition: color 0.15s, border-color 0.15s;
+
+    &.active,
+    &:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+  }
+}

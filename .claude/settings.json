@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "additionalDirectories": [
+      "/Users/alex/allProjs/cv/src/app"
+    ],
+    "allow": [
+      "Bash(npm run *)"
+    ]
+  }
+}
