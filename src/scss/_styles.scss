@@ -15,6 +15,20 @@ body {
   "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
   "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
   min-height: 100svh;
+  background: var(--bg-page);
+}
+
+h3.color-gray-2 {
+  border-left: 3px solid var(--accent);
+  padding-left: 0.5rem;
+}
+
+.grid-2 > div,
+.grid-3 > div {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
 }
 
 a {
@@ -25,5 +39,5 @@ a {
 time {
   font-size: 0.9rem;
   font-weight: bold;
-  color: var(--orange);
+  color: var(--accent);
 }

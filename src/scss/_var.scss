@@ -4,7 +4,10 @@
   --gray: #9f9f9f;
   --gray-2: #606060;
   --light-gray: #dfdfdf;
-  --orange: #e78a3e;
+  --accent: #3aaa72;
+  --bg-page: #f4fdf8;
+  --bg-card: #ffffff;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .border-radius { border-radius: var(--border-radius); }
@@ -21,5 +24,5 @@
 .color-light-gray { color: var(--light-gray); }
 .bg-light-gray { background: var(--light-gray); }
 
-.color-orange { color: var(--orange); }
-.bg-orange { background: var(--orange); }
+.color-accent { color: var(--accent); }
+.bg-accent { background: var(--accent); }
