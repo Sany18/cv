@@ -5,7 +5,7 @@ import { translations } from '@/i18n/translations';
 import { Time } from "@/components/time/time";
 
 const jobDates = [
-  { start: '2024-10', end: undefined },
+  { start: '2024-10', end: '2026-05' },
   { start: '2020-11', end: '2024-10' },
   { start: '2018-09', end: '2020-11' },
   { start: '2016-07', end: '2018-07' },
