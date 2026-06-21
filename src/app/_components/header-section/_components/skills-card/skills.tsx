@@ -22,10 +22,14 @@ export const SkillsCard = () => {
       <h3 className='mb-2 color-gray-2'>{t.heading}</h3>
 
       <h4>{t.main}</h4>
-      <p className="mb-2">{mainSkills.join(', ')}</p>
+      <ul className="skills-list mb-2">
+        {mainSkills.map(skill => <li key={skill}>{skill}</li>)}
+      </ul>
 
       <h4>{t.other}</h4>
-      <p>{skills.join(', ')}</p>
+      <ul className="skills-list">
+        {skills.map(skill => <li key={skill}>{skill}</li>)}
+      </ul>
     </div>
   );
 };
