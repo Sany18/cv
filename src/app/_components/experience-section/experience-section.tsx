@@ -26,22 +26,22 @@ export const ExperienceSection = () => {
   const [radioOpen, setRadioOpen] = useState(false);
 
   return (
-    <>
+    <section>
       <h3 className='color-gray-2'>{t.heading}</h3>
 
       <div className='d-flex grid-3'>
         {t.jobs.map((job, i) => (
-          <div key={i} className='d-flex flex-column gap-1'>
+          <article key={i} className='d-flex flex-column gap-1'>
             <h4>{job.title}</h4>
-            <i>{job.company}</i>
+            <span className='company'>{job.company}</span>
             <b>
               <Time time={jobDates[i].start} /> - <Time time={jobDates[i].end} />
             </b>
             <p><b>{t.skillsLabel}</b> {jobSkills[i]}</p>
             <p><b>{t.responsibilityLabel}</b> {job.responsibility}</p>
-          </div>
+          </article>
         ))}
-        <div className='d-flex flex-column gap-1 radio-card'>
+        <div className='d-flex flex-column gap-1 radio-card' aria-label="Radio engineering details">
           <button
             className='radio-card__toggle'
             onClick={() => setRadioOpen(o => !o)}
@@ -65,6 +65,6 @@ export const ExperienceSection = () => {
           )}
         </div>
       </div>
-    </>
+    </section>
   );
 };

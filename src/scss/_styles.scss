@@ -23,8 +23,8 @@ h3.color-gray-2 {
   padding-left: 0.5rem;
 }
 
-.grid-2 > div,
-.grid-3 > div {
+.grid-2 > *,
+.grid-3 > * {
   background: var(--bg-card);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);

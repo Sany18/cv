@@ -62,7 +62,7 @@ export const ProjectsSection = () => {
   const t = translations[lang].projects;
 
   return (
-    <>
+    <section>
       <h3 className='color-gray-2'>{t.heading}</h3>
 
       <div className='d-flex grid-3'>
@@ -71,17 +71,17 @@ export const ProjectsSection = () => {
           const name = projectNames[i];
 
           return (
-            <div key={i} className='d-flex flex-column gap-1'>
+            <article key={i} className='d-flex flex-column gap-1'>
               {meta.url
-                ? <a href={meta.url} target='_blank'><h4>{name}</h4></a>
+                ? <h4><a href={meta.url} target='_blank' rel='noopener'>{name}</a></h4>
                 : <h4>{name}</h4>
               }
 
               {'subprojects' in meta && meta.subprojects && (
                 <>
-                  <h6>{t.subprojectsLabel}</h6>
+                  <p><strong>{t.subprojectsLabel}</strong></p>
                   {meta.subprojects.map((sp) => (
-                    <a key={sp.url} href={sp.url} target='_blank'>{sp.label}</a>
+                    <a key={sp.url} href={sp.url} target='_blank' rel='noopener'>{sp.label}</a>
                   ))}
                 </>
               )}
@@ -91,10 +91,10 @@ export const ProjectsSection = () => {
               </b>
               <p>{item.description}</p>
               <p><b>{t.skillsLabel}</b> {meta.skills}</p>
-            </div>
+            </article>
           );
         })}
       </div>
-    </>
+    </section>
   );
 };
