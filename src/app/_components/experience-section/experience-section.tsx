@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import { useLanguage } from '@/context/language-context';
 import { translations } from '@/i18n/translations';
 import { Time } from "@/components/time/time";
+import './experience-section.scss';
 
 const jobDates = [
   { start: '2024-10', end: '2026-05' },
@@ -21,6 +23,7 @@ const jobSkills = [
 export const ExperienceSection = () => {
   const { lang } = useLanguage();
   const t = translations[lang].experience;
+  const [radioOpen, setRadioOpen] = useState(false);
 
   return (
     <>
@@ -38,6 +41,29 @@ export const ExperienceSection = () => {
             <p><b>{t.responsibilityLabel}</b> {job.responsibility}</p>
           </div>
         ))}
+        <div className='d-flex flex-column gap-1 radio-card'>
+          <button
+            className='radio-card__toggle'
+            onClick={() => setRadioOpen(o => !o)}
+            aria-expanded={radioOpen}
+          >
+            <span>{radioOpen ? '▼' : '▶'}</span>
+            {t.radioToggleLabel}
+          </button>
+          {radioOpen && (
+            <div className='radio-card__body d-flex flex-column gap-1'>
+              <p>{t.radioDetails.intro}</p>
+              <p><b>{t.radioDetails.esp32Heading}:</b></p>
+              <ul>
+                {t.radioDetails.esp32Projects.map((proj, j) => (
+                  <li key={j}>{proj}</li>
+                ))}
+              </ul>
+              <p><b>{t.radioDetails.gisHeading}:</b></p>
+              <p>{t.radioDetails.gisDescription}</p>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

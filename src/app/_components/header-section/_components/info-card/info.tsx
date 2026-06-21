@@ -41,6 +41,11 @@ export const InfoCard = () => {
           <span className="material-symbols-outlined mr-1">link</span>
           <a href='https://stackoverflow.com/users/12074431/hoxz' target='_blank'>Stack Overflow</a>
         </div>
+
+        <div className="d-flex align-items-center">
+          <span className="material-symbols-outlined mr-1">link</span>
+          <a href='https://hoxzy.blogspot.com/' target='_blank'>Blog</a>
+        </div>
       </div>
     </div>
   );

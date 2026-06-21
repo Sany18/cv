@@ -1,0 +1,32 @@
+.radio-card {
+  &__toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+
+    span {
+      font-size: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &__body {
+    ul {
+      margin-left: 1.25rem;
+    }
+  }
+}

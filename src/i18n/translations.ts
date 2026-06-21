@@ -45,6 +45,19 @@ export const translations = {
           responsibility: 'Support of the internal accounting program (C#, MySQL). Repair of branded equipment, installation of software and hardware.',
         },
       ],
+      radioToggleLabel: 'Radio Engineering Details',
+      radioDetails: {
+        intro: 'Worked at NovuMedical repairing branded electronics. Around 3 years developing skills with ESP32 and Arduino.',
+        esp32Heading: 'Notable ESP32 Projects',
+        esp32Projects: [
+          'TDOA-based noise direction detector',
+          'Custom car speedometer',
+          'Pseudo 3D demo on ESP32 C3 on customized 128×160 TFT display',
+          'RF plane tail module',
+        ],
+        gisHeading: 'GIS & Maps',
+        gisDescription: 'Online IoT and drone photo scans with projected representation.',
+      },
     },
     education: {
       heading: 'Education',
@@ -126,6 +139,19 @@ export const translations = {
           responsibility: 'Підтримка внутрішньої бухгалтерської програми (C#, MySQL). Ремонт фірмового обладнання, встановлення програмного та апаратного забезпечення.',
         },
       ],
+      radioToggleLabel: 'Деталі радіоінженерії',
+      radioDetails: {
+        intro: 'Працював у NovuMedical, займаючись ремонтом брендової електроніки. Близько 3 років розвитку навичок роботи з ESP32 та Arduino.',
+        esp32Heading: 'Цікаві проекти на ESP32',
+        esp32Projects: [
+          'Детектор напрямку шуму на основі TDOA',
+          'Нестандартний спідометр для автомобіля',
+          'Псевдо-3D демо на ESP32 C3 на кастомізованому TFT-дисплеї 128×160',
+          'RF-модуль хвостового оперення для літака',
+        ],
+        gisHeading: 'ГІС та карти',
+        gisDescription: 'Онлайн IoT та фотосканування з дронів із проекційним відображенням.',
+      },
     },
     education: {
       heading: 'Освіта',
