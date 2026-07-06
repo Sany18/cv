@@ -43,7 +43,7 @@ const projectMeta = [
     subprojects: [
       { url: 'https://alter-space.biz.ua/tetris/', label: 'Classic Tetris' },
       { url: 'https://alter-space.biz.ua/3d-shooter', label: '3D shooter playground (demo)' },
-      { url: 'https://sany18.github.io/note-keeper/', label: 'Note Keeper' },
+      { url: 'https://alter-space.biz.ua/note-keeper/', label: 'Note Keeper' },
     ],
   },
 ];
