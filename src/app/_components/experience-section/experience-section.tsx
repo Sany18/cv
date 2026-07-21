@@ -7,6 +7,7 @@ import { Time } from "@/components/time/time";
 import './experience-section.scss';
 
 const jobDates = [
+  { start: '2026-05' },
   { start: '2024-10', end: '2026-05' },
   { start: '2020-11', end: '2024-10' },
   { start: '2018-09', end: '2020-11' },
@@ -14,6 +15,7 @@ const jobDates = [
 ];
 
 const jobSkills = [
+  'Full-Stack Architecture • Multi-tenant Architecture • RBAC • Node.js • CI/CD • DevOps',
   'LuciadRIA • GIS • Point Clouds • 3D Tiles • Geo-reference Systems • TypeScript',
   'Angular • React • Three Js (3D) • Optimizing Performance • Software Deployment • SASS',
   'React Js • React Native • Webpack • CI/CD • jQuery • Ruby on Rails',

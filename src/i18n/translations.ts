@@ -5,7 +5,7 @@ export const translations = {
     present: 'Present',
     header: {
       name: 'Tantsiura Olexandr',
-      title: 'Software Systems Engineer (Web / 3D)',
+      title: 'Software Systems Engineer (Web / 3D) / Founding Full-Stack Engineer',
       photoAlt: 'Olexandr Tantsiura profile photo',
       location: 'Ukraine, Cherkasy',
     },
@@ -24,6 +24,11 @@ export const translations = {
       skillsLabel: 'Skills:',
       responsibilityLabel: 'Responsibility:',
       jobs: [
+        {
+          title: 'Founding Full-Stack Engineer',
+          company: 'Self-employed',
+          responsibility: 'Single-handedly designing, building, and maintaining an end-to-end B2B CRM platform integrated with an e-commerce storefront for the floral industry. Full-cycle workflow automation covering supply chain, stock tracking, and retail/online sales. Multi-tenant architecture with secure, isolated contractor access (RBAC). Real-time integration between the CRM backend and the customer-facing storefront. Automated CI/CD, authentication, and monitoring, maintaining 100% production uptime.',
+        },
         {
           title: 'Software Systems Engineer (Web / 3D)',
           company: 'InfraCloud',
@@ -99,7 +104,7 @@ export const translations = {
     present: 'Зараз',
     header: {
       name: 'Танцюра Олександр',
-      title: 'Інженер програмних систем (Web / 3D)',
+      title: 'Інженер програмних систем (Web / 3D) / Full-Stack інженер-засновник',
       photoAlt: 'Фото профілю Олександра Танцюри',
       location: 'Україна, Черкаси',
     },
@@ -118,6 +123,11 @@ export const translations = {
       skillsLabel: 'Навички:',
       responsibilityLabel: 'Обов’язки:',
       jobs: [
+        {
+          title: 'Full-Stack інженер-засновник',
+          company: 'Самозайнятість',
+          responsibility: 'Одноосібне проєктування, розробка та підтримка B2B CRM-платформи, інтегрованої з інтернет-магазином для квіткової галузі. Повна автоматизація операційних процесів: від управління постачанням та обліку залишків до роздрібних і онлайн-продажів. Мультитенантна архітектура з ізольованим доступом для підрядників (RBAC). Інтеграція в реальному часі між CRM-бекендом та клієнтським сайтом. Автоматизовані CI/CD, автентифікація та моніторинг — 100% безвідмовної роботи в продакшені.',
+        },
         {
           title: 'Інженер програмних систем (Web / 3D)',
           company: 'InfraCloud',

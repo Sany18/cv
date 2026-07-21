@@ -81,6 +81,8 @@ function buildJsonLd(lang: Lang) {
       '3D Web Development', 'GIS', 'LuciadRIA', 'Point Clouds', '3D Tiles',
       'Node.js', 'WebRTC', 'WebSockets', 'Docker', 'Ruby on Rails',
       'React Native', 'CI/CD', 'Git', 'GitLab CI/CD', 'Jest', 'Webpack', 'PWA',
+      'Full-Stack Architecture', 'Multi-tenant Architecture',
+      'Role-Based Access Control (RBAC)', 'B2B CRM', 'DevOps',
     ],
     alumniOf: {
       '@type': 'CollegeOrUniversity',
@@ -88,12 +90,12 @@ function buildJsonLd(lang: Lang) {
     },
     worksFor: {
       '@type': 'Organization',
-      name: 'InfraCloud',
+      name: 'Self-employed',
     },
     hasOccupation: {
       '@type': 'Occupation',
       name: t.header.title,
-      skills: 'JavaScript, TypeScript, Angular, React, Three.js (3D), LuciadRIA, GIS, Point Clouds, 3D Tiles, Geo-reference Systems, Node.js, WebRTC, Docker, CI/CD, Ruby on Rails, React Native, Git',
+      skills: 'JavaScript, TypeScript, Angular, React, Three.js (3D), LuciadRIA, GIS, Point Clouds, 3D Tiles, Geo-reference Systems, Node.js, WebRTC, Docker, CI/CD, Ruby on Rails, React Native, Git, Full-Stack Architecture, Multi-tenant Architecture, RBAC, B2B CRM, DevOps',
     },
   };
 }
