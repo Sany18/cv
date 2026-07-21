@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Job Watcher</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff; --fg: #1a1a1a; --muted: #6b7280; --border: #e5e7eb;
+    --card: #f9fafb; --accent: #2563eb; --new: #16a34a; --new-bg: #dcfce7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0f1115; --fg: #e5e7eb; --muted: #9ca3af; --border: #262a33;
+      --card: #171a21; --accent: #60a5fa; --new: #4ade80; --new-bg: #103a20; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg); color: var(--fg); }
+  header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
+  h1 { font-size: 1.1rem; margin: 0; }
+  #meta { color: var(--muted); font-size: 0.85rem; }
+  button { background: var(--accent); color: white; border: none; border-radius: 6px;
+    padding: 0.5rem 1rem; font-size: 0.85rem; cursor: pointer; }
+  button:disabled { opacity: 0.6; cursor: default; }
+  .controls { padding: 1rem 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+    border-bottom: 1px solid var(--border); }
+  input[type="text"] { padding: 0.5rem 0.75rem; border: 1px solid var(--border); border-radius: 6px;
+    background: var(--bg); color: var(--fg); font-size: 0.9rem; min-width: 220px; }
+  .sources label { font-size: 0.85rem; margin-right: 0.75rem; color: var(--muted); }
+  main { max-width: 900px; margin: 0 auto; padding: 1rem 1.5rem 3rem; }
+  .job { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 0.9rem 1.1rem; margin-bottom: 0.7rem; }
+  .job-top { display: flex; justify-content: space-between; gap: 0.5rem; align-items: baseline; }
+  .job a { color: var(--fg); text-decoration: none; font-weight: 600; }
+  .job a:hover { color: var(--accent); }
+  .job-sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.25rem; }
+  .badge { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 999px; white-space: nowrap; }
+  .badge.new { background: var(--new-bg); color: var(--new); font-weight: 700; }
+  .badge.source { background: var(--border); color: var(--muted); }
+  #empty { color: var(--muted); padding: 2rem 0; text-align: center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Job Watcher</h1>
+  <div>
+    <span id="meta"></span>
+    <button id="refresh">Refresh now</button>
+  </div>
+</header>
+<div class="controls">
+  <input type="text" id="search" placeholder="Filter by title / company…" />
+  <div class="sources" id="sources"></div>
+  <label style="font-size:0.85rem;color:var(--muted)">
+    <input type="checkbox" id="newOnly" /> new only
+  </label>
+</div>
+<main>
+  <div id="list"></div>
+  <div id="empty" hidden>No jobs match the current filters.</div>
+</main>
+
+<script>
+  let state = { fetchedAt: null, jobs: [] };
+  const activeSources = new Set();
+  const AUTO_REFRESH_MS = 15 * 60 * 1000;
+
+  async function loadJobs() {
+    const res = await fetch("/api/jobs");
+    state = await res.json();
+    if (activeSources.size === 0) {
+      new Set(state.jobs.map((j) => j.source)).forEach((s) => activeSources.add(s));
+    }
+    renderSources();
+    render();
+  }
+
+  async function refresh() {
+    const btn = document.getElementById("refresh");
+    btn.disabled = true;
+    btn.textContent = "Refreshing…";
+    try {
+      const res = await fetch("/api/refresh", { method: "POST" });
+      state = await res.json();
+      render();
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Refresh now";
+    }
+  }
+
+  function renderSources() {
+    const el = document.getElementById("sources");
+    const sources = [...new Set(state.jobs.map((j) => j.source))].sort();
+    el.innerHTML = sources
+      .map(
+        (s) => `<label><input type="checkbox" data-source="${s}" ${activeSources.has(s) ? "checked" : ""}/> ${s}</label>`
+      )
+      .join("");
+    el.querySelectorAll("input[data-source]").forEach((cb) => {
+      cb.addEventListener("change", () => {
+        cb.checked ? activeSources.add(cb.dataset.source) : activeSources.delete(cb.dataset.source);
+        render();
+      });
+    });
+  }
+
+  function render() {
+    const q = document.getElementById("search").value.trim().toLowerCase();
+    const newOnly = document.getElementById("newOnly").checked;
+    const list = document.getElementById("list");
+    const meta = document.getElementById("meta");
+
+    meta.textContent = state.fetchedAt
+      ? `Last checked ${new Date(state.fetchedAt).toLocaleString()} · ${state.jobs.length} jobs`
+      : "";
+
+    const filtered = state.jobs.filter((j) => {
+      if (!activeSources.has(j.source)) return false;
+      if (newOnly && !j.isNew) return false;
+      if (q && !(`${j.title} ${j.company}`.toLowerCase().includes(q))) return false;
+      return true;
+    });
+
+    document.getElementById("empty").hidden = filtered.length !== 0;
+    list.innerHTML = filtered
+      .map((j) => {
+        const when = j.postedAt || j.firstSeenAt;
+        const whenStr = when
+          ? new Date(when).toLocaleDateString(undefined, {
+              year: "numeric", month: "short", day: "numeric",
+              hour: "2-digit", minute: "2-digit",
+            })
+          : "";
+        return `
+        <div class="job">
+          <div class="job-top">
+            <a href="${j.url}" target="_blank" rel="noopener">${escapeHtml(j.title)}</a>
+            <span class="badge source">${j.source}</span>
+          </div>
+          <div class="job-sub">
+            ${escapeHtml(j.company || "")}${j.company ? " · " : ""}${escapeHtml(j.location || "")}
+            ${whenStr ? " · " + whenStr : ""}
+            ${j.isNew ? '<span class="badge new">NEW</span>' : ""}
+          </div>
+        </div>`;
+      })
+      .join("");
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+
+  document.getElementById("refresh").addEventListener("click", refresh);
+  document.getElementById("search").addEventListener("input", render);
+  document.getElementById("newOnly").addEventListener("change", render);
+
+  loadJobs();
+  setInterval(refresh, AUTO_REFRESH_MS);
+</script>
+</body>
+</html>

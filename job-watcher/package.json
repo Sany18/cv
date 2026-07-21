@@ -1,0 +1,11 @@
+{
+  "name": "job-watcher",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local page that watches Djinni, DOU, RemoteOK and We Work Remotely for new job postings matching your stack.",
+  "scripts": {
+    "fetch": "node fetch-jobs.mjs",
+    "start": "node server.mjs"
+  }
+}
