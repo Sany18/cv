@@ -12,6 +12,7 @@ export const SkillsCard = () => {
   ];
 
   const skills = [
+    'AI Agents & Orchestration', 'MCP (Model Context Protocol)',
     'Node.js', 'Express.js', 'WebRTC/WS', 'NGINX', 'Webpack', 'React Native', 'Expo',
     'jQuery', 'Docker', 'Shell Script', 'RoR', 'Ruby', 'Jekyll', 'Git', 'GitLab CI/CD', 'Jest',
     'Userscript/Tempermonkey/Chrome extensions', 'PWA',

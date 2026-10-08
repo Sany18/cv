@@ -78,6 +78,7 @@ function buildJsonLd(lang: Lang) {
     ],
     knowsAbout: [
       'JavaScript', 'TypeScript', 'Angular', 'React', 'Three.js',
+      'AI Agents & Multi-Agent Orchestration', 'AI Output Validation & Quality Gates', 'MCP (Model Context Protocol)',
       '3D Web Development', 'GIS', 'LuciadRIA', 'Point Clouds', '3D Tiles',
       'Node.js', 'WebRTC', 'WebSockets', 'Docker', 'Ruby on Rails',
       'React Native', 'CI/CD', 'Git', 'GitLab CI/CD', 'Jest', 'Webpack', 'PWA',
@@ -95,7 +96,7 @@ function buildJsonLd(lang: Lang) {
     hasOccupation: {
       '@type': 'Occupation',
       name: t.header.title,
-      skills: 'JavaScript, TypeScript, Angular, React, Three.js (3D), LuciadRIA, GIS, Point Clouds, 3D Tiles, Geo-reference Systems, Node.js, WebRTC, Docker, CI/CD, Ruby on Rails, React Native, Git, Full-Stack Architecture, Multi-tenant Architecture, RBAC, B2B CRM, DevOps',
+      skills: 'JavaScript, TypeScript, Angular, React, Three.js (3D), AI Agents & Orchestration, AI Validation, MCP, LuciadRIA, GIS, Point Clouds, 3D Tiles, Geo-reference Systems, Node.js, WebRTC, Docker, CI/CD, Ruby on Rails, React Native, Git, Full-Stack Architecture, Multi-tenant Architecture, RBAC, B2B CRM, DevOps',
     },
   };
 }

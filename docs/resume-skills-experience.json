@@ -1,0 +1,635 @@
+{
+  "meta": {
+    "updated": "2026-10-08",
+    "language": "uk",
+    "purpose": "Довідник для компонування кількох резюме під різні вакансії. Фільтруй за skills[*].tier та experience/projects під потрібний фокус (front-end / full-stack / 3D-GIS / founding / embedded).",
+    "sources": [
+      "CV-проєкт (translations.ts, JSON-LD, компоненти секцій)",
+      "4-раундове опитування",
+      "повний скан ~/allProjs на ноутбуці та на x1 (Ubuntu ops/homelab станція, x1-tail, user sa)",
+      "docs/skills.md (детальні докази по кожній навичці)"
+    ],
+    "tier_legend": {
+      "core": "Експерт — робить не задумуючись, може вести/архітектурити",
+      "strong": "Продакшн-досвід на кількох проєктах/роках, самостійний",
+      "working": "Реальна робота на проєкті, продуктивний",
+      "exploratory": "Хобі / нове / один проєкт / знайомство з кодовою базою"
+    }
+  },
+
+  "candidate": {
+    "name": "Олександр Танцюра",
+    "name_en": "Olexandr Tantsiura",
+    "alt_names": ["Танцюра Олександр", "Alexandr Tantsiura", "Tantsiura Olexandr"],
+    "headline": "Інженер програмних систем (Web / 3D) / Full-Stack інженер-засновник",
+    "headline_variants": {
+      "frontend": "Senior Front-End інженер (React / Angular / 3D)",
+      "fullstack": "Full-Stack інженер (TypeScript, Node.js, DevOps)",
+      "web_3d_gis": "Web / 3D / GIS інженер (Three.js, LuciadRIA)",
+      "founding": "Founding Full-Stack інженер"
+    },
+    "location": "Черкаси, Україна",
+    "timezone": "Europe/Kyiv",
+    "remote_ok": true,
+    "experience_years": 8,
+    "frontend_focus_years": 5,
+    "summary": "Веб-розробник із понад 8 роками досвіду розробки, тестування, налагодження, оптимізації, розгортання та підтримки веб-застосунків. Починав як full-stack розробник; близько 5 останніх років фокусувався на front-end, зокрема на 3D/GIS веб-застосунках. Нещодавно одноосібно спроєктував, побудував і підтримує цілий e-commerce + CRM/ERP продукт — фронтенд, бекенд, базу даних і мультихостову інфраструктуру з blue-green деплоєм.",
+    "summary_short": "Full-stack інженер, 8+ років. Front-end (React/Angular), 3D/GIS (Three.js/LuciadRIA), Node.js бекенд і DevOps. Одноосібно побудував і підтримує e-commerce + CRM/ERP платформу разом з її інфраструктурою.",
+    "contacts": {
+      "email": "parubok.sashko@gmail.com",
+      "phone": "+380633884959",
+      "linkedin": "https://www.linkedin.com/in/alexandr-tantsiura-49393a166/",
+      "github": "https://github.com/Sany18",
+      "stackoverflow": "https://stackoverflow.com/users/12074431/hoxz",
+      "blog": "https://hoxzy.blogspot.com/",
+      "medium": "https://medium.com/@parubok.sashko",
+      "cv_site": "https://sany18.github.io/cv/en"
+    }
+  },
+
+  "skills": {
+    "core": ["JavaScript", "TypeScript", "Angular", "React", "Three.js"],
+
+    "languages": [
+      { "name": "JavaScript", "tier": "core" },
+      { "name": "TypeScript", "tier": "core" },
+      { "name": "SQL (PostgreSQL)", "tier": "strong" },
+      { "name": "Bash / Shell", "tier": "strong" },
+      { "name": "C / C++", "tier": "working" },
+      { "name": "Python", "tier": "working", "note": "telegram_bot (Flask + PTB), ai (gRPC-клієнт), tooling" },
+      { "name": "Rust", "tier": "exploratory", "note": "bro — браузер з нуля" },
+      { "name": "Lua", "tier": "exploratory", "note": "xiaomi — Mi Watch watchfaces" },
+      { "name": "Smali (Dalvik bytecode)", "tier": "exploratory" }
+    ],
+
+    "frontend": [
+      { "name": "Angular", "tier": "core", "note": "до Angular 20" },
+      { "name": "React", "tier": "core", "note": "18 / 19" },
+      { "name": "Next.js", "tier": "strong", "note": "15, App Router, SSR/SSG" },
+      { "name": "Vite", "tier": "strong" },
+      { "name": "NgRx", "tier": "strong" },
+      { "name": "RxJS", "tier": "strong" },
+      { "name": "Zustand", "tier": "strong" },
+      { "name": "TanStack Query (React Query)", "tier": "strong" },
+      { "name": "React Router", "tier": "strong" },
+      { "name": "SCSS / SASS", "tier": "strong" },
+      { "name": "CSS Modules", "tier": "strong" },
+      { "name": "CSS design tokens + BEM", "tier": "strong" },
+      { "name": "ngx-translate / i18n", "tier": "strong" },
+      { "name": "PWA / service workers", "tier": "strong" },
+      { "name": "Webpack", "tier": "strong" },
+      { "name": "Web performance / Core Web Vitals", "tier": "strong" },
+      { "name": "Redux / Redux Toolkit", "tier": "working" },
+      { "name": "Recoil", "tier": "working" },
+      { "name": "Tailwind CSS", "tier": "working" },
+      { "name": "Angular Material / Material UI (+ CDK)", "tier": "working" },
+      { "name": "styled-components", "tier": "working" },
+      { "name": "TanStack Table", "tier": "working" },
+      { "name": "FullCalendar", "tier": "working" },
+      { "name": "Highcharts", "tier": "working" },
+      { "name": "React Native / Expo", "tier": "working" },
+      { "name": "Accessibility (a11y)", "tier": "working" },
+      { "name": "SEO (SSR/SSG, sitemaps, structured data)", "tier": "working" },
+      { "name": "jQuery / Parallax.js", "tier": "working" },
+      { "name": "CodeMirror", "tier": "working" }
+    ],
+
+    "graphics_3d_games": [
+      { "name": "Three.js", "tier": "core" },
+      { "name": "WebGL / GLSL шейдери", "tier": "strong" },
+      { "name": "Canvas 2D API", "tier": "strong" },
+      { "name": "Фізичні рушії (cannon-es / oimo)", "tier": "working" },
+      { "name": "Процедурна генерація світу", "tier": "working" },
+      { "name": "Розробка ігор", "tier": "working" },
+      { "name": "Реальний час / мультиплеєр (netcode)", "tier": "working" },
+      { "name": "WebAssembly / Emscripten", "tier": "working" },
+      { "name": "Web Audio API", "tier": "working" },
+      { "name": "Data viz (SVG / Canvas / Highcharts)", "tier": "working" },
+      { "name": "Parametric CAD (OpenSCAD)", "tier": "exploratory" },
+      { "name": "GPU.js", "tier": "exploratory" },
+      { "name": "OpenCV.js", "tier": "exploratory" }
+    ],
+
+    "gis_maps": [
+      { "name": "LuciadRIA", "tier": "strong", "note": "RIA 2026" },
+      { "name": "GIS / геореферентні системи", "tier": "strong" },
+      { "name": "Хмари точок", "tier": "working" },
+      { "name": "3D Tiles", "tier": "working" },
+      { "name": "OpenLayers", "tier": "working" },
+      { "name": "Leaflet", "tier": "working" },
+      { "name": "GeoTIFF", "tier": "working" },
+      { "name": "PostGIS (просторовий SQL)", "tier": "exploratory" },
+      { "name": "IFC / BIM (web-ifc)", "tier": "exploratory" }
+    ],
+
+    "backend": [
+      { "name": "Node.js", "tier": "strong" },
+      { "name": "Bun (runtime)", "tier": "working", "note": "fto backend, meadowkeep WS server, gta-vc server, range" },
+      { "name": "Fastify", "tier": "strong" },
+      { "name": "Express.js", "tier": "strong" },
+      { "name": "Hono", "tier": "working", "note": "fto — замінив legacy Express після route-parity міграції" },
+      { "name": "Flask", "tier": "working", "note": "telegram_bot — HMAC-верифікований API + Telegram Mini App на x1" },
+      { "name": "REST API design", "tier": "strong" },
+      { "name": "Безпека та надійність API", "tier": "strong", "note": "JWT+refresh, RBAC, 2FA, HMAC webhooks, CSP+nonce, Idempotency-Key, correlation IDs, Outbox pattern, rate limiting, audit log" },
+      { "name": "BullMQ (черги / воркери)", "tier": "strong" },
+      { "name": "WebSockets (ws / Socket.io)", "tier": "strong" },
+      { "name": "Zod", "tier": "strong" },
+      { "name": "NestJS", "tier": "working" },
+      { "name": "ORM — TypeORM / Mongoose", "tier": "working", "note": "TypeORM у radiosniper; Mongoose у fto" },
+      { "name": "Server-Sent Events (SSE)", "tier": "working" },
+      { "name": "WebRTC", "tier": "working" },
+      { "name": "gRPC", "tier": "working" },
+      { "name": "GraphQL", "tier": "working" },
+      { "name": "Raw TCP / сокети / бінарні протоколи", "tier": "working" },
+      { "name": "SSH reverse tunnels / ad-hoc публічні endpoint-и", "tier": "working", "note": "telegram_bot (ssh -R → localhost.run); ngrok у carlink" },
+      { "name": "OAuth2 / OIDC / Keycloak (клієнтська інтеграція)", "tier": "working" },
+      { "name": "Транзакційний email (nodemailer)", "tier": "working" },
+      { "name": "Обробка медіа (Sharp / ffmpeg / pdfkit / blurhash)", "tier": "working" },
+      { "name": "Query builder — Knex", "tier": "exploratory" },
+      { "name": "ExcelJS", "tier": "exploratory" }
+    ],
+
+    "databases": [
+      { "name": "PostgreSQL", "tier": "strong" },
+      { "name": "Redis", "tier": "strong" },
+      { "name": "MySQL / MariaDB", "tier": "working" },
+      { "name": "MongoDB / Mongoose", "tier": "working", "note": "fto — основне сховище" },
+      { "name": "SQLite", "tier": "working" },
+      { "name": "Firebase / Firestore", "tier": "working" },
+      { "name": "Supabase", "tier": "working" },
+      { "name": "S3-сумісне сховище (DigitalOcean Spaces)", "tier": "working" }
+    ],
+
+    "devops_infra": [
+      { "name": "Адміністрування Ubuntu / Linux серверів", "tier": "strong" },
+      { "name": "Docker", "tier": "strong" },
+      { "name": "Docker Compose", "tier": "strong" },
+      { "name": "NGINX", "tier": "strong" },
+      { "name": "SSH (bastion / jump-host / автоматизація ключів)", "tier": "strong" },
+      { "name": "CI/CD та автоматизація деплою", "tier": "strong" },
+      { "name": "GitHub Actions", "tier": "strong" },
+      { "name": "GitLab CI/CD", "tier": "strong" },
+      { "name": "pnpm workspaces (монорепо)", "tier": "strong" },
+      { "name": "Git", "tier": "strong" },
+      { "name": "Blue-green / zero-downtime деплой", "tier": "working" },
+      { "name": "UFW / firewall", "tier": "working" },
+      { "name": "Let's Encrypt / TLS", "tier": "working" },
+      { "name": "Tailscale (mesh VPN / tailnet)", "tier": "working", "note": "приватна адресація між ноутбуком, x1 і дроплетами" },
+      { "name": "Спостережуваність (Prometheus / node_exporter / cAdvisor / Uptime Kuma)", "tier": "working" },
+      { "name": "Error tracking (GlitchTip / self-hosted Sentry)", "tier": "working" },
+      { "name": "Self-hosting сторонніх сервісів", "tier": "working", "note": "veronica сервіси; x1 homelab: Pi-hole, Minecraft, fto" },
+      { "name": "Бекапи / DR", "tier": "working", "note": "veronica dump/restore + media→S3; backup-portai.sh (zstd/gzip + SHA-256 верифікація)" },
+      { "name": "Лінт/формат тулінг (ESLint, oxlint/oxfmt, Prettier, Husky)", "tier": "working" },
+      { "name": "Secret scanning (trufflehog)", "tier": "working" },
+      { "name": "Vitest", "tier": "strong" },
+      { "name": "Jest", "tier": "strong" },
+      { "name": "Testing Library", "tier": "working" },
+      { "name": "Playwright", "tier": "working" },
+      { "name": "Cypress", "tier": "working" },
+      { "name": "Karma / Jasmine", "tier": "working" }
+    ],
+
+    "not_used": ["Kubernetes", "Terraform / Ansible / декларативний IaC"],
+
+    "cloud": [
+      { "name": "DigitalOcean (Droplets, Spaces, CDN, приватна мережа)", "tier": "working" },
+      { "name": "Cloudflare (DNS, CDN, TLS, Turnstile, cache-purge API)", "tier": "working" },
+      { "name": "AWS SDK (SNS, SQS, CloudFront signing, Cognito, ECR)", "tier": "exploratory", "note": "присутнє в кодовій базі port_AI; там робота була front-end/карти/3D, не AWS-бекенд" },
+      { "name": "CapRover (PaaS)", "tier": "exploratory" },
+      { "name": "Keycloak (self-hosted IdP)", "tier": "exploratory" }
+    ],
+
+    "architecture_and_delivery": [
+      { "name": "Full-stack архітектура", "tier": "strong" },
+      { "name": "Domain-driven / модульний дизайн", "tier": "strong" },
+      { "name": "Event-driven / інтеграційна архітектура", "tier": "strong" },
+      { "name": "RBAC / автентифікація / авторизація", "tier": "strong" },
+      { "name": "E-commerce / CRM системи", "tier": "strong" },
+      { "name": "Геопросторовий / інфраструктурно-інспекційний домен", "tier": "strong" },
+      { "name": "Оптимізація продуктивності та діагностика складних багів", "tier": "strong" },
+      { "name": "Технічна документація", "tier": "strong" },
+      { "name": "Code review", "tier": "strong" },
+      { "name": "Пряма комунікація з клієнтом", "tier": "strong" },
+      { "name": "Мультитенантна архітектура", "tier": "working" },
+      { "name": "Inventory / ERP-логіка (BOM costing, stocktaking, warehouse receipts)", "tier": "working" },
+      { "name": "Проєктування pricing-рушія", "tier": "working" },
+      { "name": "Інтеграція платежів", "tier": "working" },
+      { "name": "Single-operator ops model", "tier": "working" },
+      { "name": "Оцінювання робіт / скоуп", "tier": "working" },
+      { "name": "Формування вимог і roadmap", "tier": "working" },
+      { "name": "Менторство / консультації", "tier": "working" },
+      { "name": "Scrum / Kanban / Agile", "tier": "working" },
+      { "name": "Технічне письмо / блогінг", "tier": "working" }
+    ],
+
+    "integrations": [
+      { "name": "WayForPay (платежі, рефанди, HMAC-MD5, webhooks)", "tier": "working" },
+      { "name": "Cloudflare Turnstile", "tier": "working" },
+      { "name": "Telegram Bot API", "tier": "working" },
+      { "name": "Evolution API (self-hosted WhatsApp)", "tier": "working" },
+      { "name": "Instagram Graph API", "tier": "working" },
+      { "name": "Dilovod (укр. облік)", "tier": "working" },
+      { "name": "Google Sign-In / google-auth-library", "tier": "working" },
+      { "name": "Google Merchant Center / Shopping feed", "tier": "working" },
+      { "name": "Google Search Console API", "tier": "working" },
+      { "name": "GTM / Meta Pixel / Google Ads (consent-gated)", "tier": "working" },
+      { "name": "Firebase Auth (redirect flow)", "tier": "working" },
+      { "name": "DroneDeploy extension", "tier": "working" }
+    ],
+
+    "ai_llm_tooling": [
+      {
+        "name": "AI coding агенти / CLI",
+        "tier": "strong",
+        "note": "Claude Code, OpenCode, OpenAI Codex CLI, GitHub Copilot CLI, Google Antigravity (Gemini) — парне програмування, автоматизація складних інженерних задач на x1 та ноутбуці"
+      },
+      {
+        "name": "Оркестрація агентів та мультиагентні воркфлоу",
+        "tier": "strong",
+        "note": "Декомпозиція задач на спеціалізованих субагентів (research, planner, coder, reviewer), контекстний шеринг, handoffs, координація паралельних агентів"
+      },
+      {
+        "name": "Валідація результатів ШІ та Quality Gates",
+        "tier": "strong",
+        "note": "Строга валідація схем і відповідей (Zod, structured outputs), автоматичні test gates (Vitest/Jest/Playwright перед злиттям), лінтинг (oxlint/ESLint), валідація галюцинацій та human-in-the-loop верифікація"
+      },
+      {
+        "name": "Agent-instruction engineering & Context design",
+        "tier": "strong",
+        "note": "CLAUDE.md / AGENTS.md, системні інструкції, динамічний контекстний інжиніринг, самоактуалізація правил (.github/instructions/*), .mcp.json"
+      },
+      {
+        "name": "MCP (Model Context Protocol) розробка та тулінг",
+        "tier": "working",
+        "note": "Розробка кастомних MCP серверів (@modelcontextprotocol/sdk, stdio/SSE transport, Zod-типізовані інструменти) для надання агентам доступу до API/БД"
+      },
+      {
+        "name": "Вбудовування агентів у продакшн-сервіси",
+        "tier": "working",
+        "note": "telegram_bot — /ai викликає non-interactive opencode за HMAC-верифікованим API; ізоляція середовища виконання"
+      },
+      {
+        "name": "Дизайн мультиагентного прогнозування",
+        "tier": "exploratory",
+        "note": "fto — ансамбль незалежних ШІ-агентів з різними ролями для синтезу індексу напрямку ринку (agent-orchestration-plan.md)"
+      },
+      {
+        "name": "Prompt engineering / LLM-автоматизація пайплайнів",
+        "tier": "working",
+        "note": "Контрольована генерація коду та даних, structured reasoning, ланцюжки промптів для CI/CD та скриптів міграцій"
+      },
+      {
+        "name": "Локальні image-gen та ML-моделі через API",
+        "tier": "working",
+        "note": "Draw Things / Stable Diffusion через gRPC, Ollama / llama.cpp для локального інференсу"
+      }
+    ],
+
+    "embedded_iot_hardware": [
+      { "name": "Firmware — C/C++, PlatformIO, ESP-IDF, Arduino", "tier": "working" },
+      { "name": "ESP32 (C3, S3 з PSRAM)", "tier": "working" },
+      { "name": "Дротовий Ethernet на MCU (LAN8720A)", "tier": "working" },
+      { "name": "Sub-GHz RF (CC1101)", "tier": "working" },
+      { "name": "NFC / RFID (PN532, RDM6300)", "tier": "working" },
+      { "name": "Радіо / RF / сигнали (TDOA, RF-модулі, антени)", "tier": "working" },
+      { "name": "SPI TFT драйвери (ST7735/S, ST7789, ILI9341, ILI9486)", "tier": "working" },
+      { "name": "RGB565 графіка / framebuffer streaming", "tier": "working" },
+      { "name": "FPV дрони (Betaflight / iNav / ELRS)", "tier": "working" },
+      { "name": "BLE протоколи / reverse engineering", "tier": "working" },
+      { "name": "Xiaomi Quick App / HAP hybrid platform + RPK", "tier": "working", "note": "xiaomi — hap-toolkit, quickapp-docs, manifest schema" },
+      { "name": "Mi Watch Lua watchface development", "tier": "working", "note": "xiaomi — MiWatchLuaWatchfaces, mi-watchface-uploader, EasyFace" },
+      { "name": "ADB / Android device tooling", "tier": "working", "note": "xiaomi — node-adb, adb-tools, reconnect-adb.sh" },
+      { "name": "Дрон-фотограмметрія / проекція фотосканів", "tier": "working" },
+      { "name": "Linux SBC / Raspberry Pi", "tier": "working" },
+      { "name": "Ремонт електроніки / пайка", "tier": "working" },
+      { "name": "Home server / self-hosting", "tier": "working" },
+      { "name": "Mobile Linux / прошивка телефонів", "tier": "exploratory" }
+    ],
+
+    "reverse_engineering_security": {
+      "visibility": "internal",
+      "note": "Особисте дослідження. За замовчуванням НЕ виносити в публічне резюме.",
+      "items": [
+        { "name": "Android APK RE (apktool, Smali, jadx, resign/split)", "tier": "working" },
+        { "name": "Порт ігрових рушіїв у WebAssembly", "tier": "working" },
+        { "name": "Wearable / BLE protocol reverse engineering", "tier": "working" },
+        { "name": "Secret scanning / supply-chain гігієна", "tier": "working" },
+        { "name": "Мережеве / навантажувальне тестування (raw sockets, Slowloris, proxy rotation)", "tier": "exploratory" }
+      ]
+    }
+  },
+
+  "experience": [
+    {
+      "title": "Full-Stack інженер-засновник",
+      "company": "Самозайнятість",
+      "project": "veronica",
+      "employment_period": { "start": "2026-05", "end": null, "current": true },
+      "location": "Україна",
+      "work_format": "На місці",
+      "scope": "Одноосібно все: архітектура, фронтенд (storefront + admin + control-center), бекенд (Fastify API + воркери), база даних, мультихостова інфраструктура, деплой і підтримка.",
+      "responsibilities_and_achievements": [
+        "Спроєктував, розробив і підтримує B2B CRM/ERP-платформу, інтегровану з інтернет-магазином для квіткової галузі.",
+        "Автоматизував операційний цикл: постачання, облік залишків, BOM/рецептурна собівартість, роздрібні й онлайн-продажі.",
+        "Побудував мультитенантну архітектуру з ізольованим доступом підрядників і рольовою моделлю RBAC (7 ролей, опційна 2FA).",
+        "Реалізував інтеграцію в реальному часі між CRM-бекендом і клієнтським сайтом для оновлення каталогу та обробки замовлень.",
+        "Розгорнув мультидроплетну топологію DigitalOcean за NGINX-bastion; написав власний Bash-фреймворк деплою з blue-green викоткою API, test gate і rollback.",
+        "Налаштував CI/CD, автентифікацію та моніторинг (Prometheus + GlitchTip + Uptime Kuma); система має ~100% uptime у production."
+      ],
+      "stack": ["pnpm monorepo", "Fastify", "Next.js 15", "React", "Vite", "PostgreSQL 16", "Redis", "BullMQ", "Zod", "SSE", "Docker Compose", "NGINX", "DigitalOcean", "Cloudflare", "WayForPay", "Telegram Bot API", "Evolution API (WhatsApp)", "Instagram Graph API", "MCP server"],
+      "skills": ["Full-stack архітектура", "Мультитенантність", "RBAC", "Event-driven / Outbox", "Node.js", "Fastify", "PostgreSQL", "Redis + BullMQ", "CI/CD", "DevOps", "Ubuntu server administration", "NGINX", "Docker Compose", "Blue-green деплой", "Інтеграція платежів", "Pricing-рушій"]
+    },
+    {
+      "title": "Інженер програмних систем (Web / 3D)",
+      "company": "InfraCloud",
+      "project": "port_AI (InfraCloud)",
+      "employment_period": { "start": "2024-10", "end": "2026-05", "current": false },
+      "location": "Україна",
+      "work_format": "Віддалено",
+      "scope": "Front-end, картографічний інтерфейс і 3D (~1.5 року). Невелика частка бекенду — оптимізація та виправлення складних кросс-стек багів; бекенд загалом не в зоні відповідальності.",
+      "responsibilities_and_achievements": [
+        "Розробляв 3D веб-застосунок для управління / інспекції інфраструктури.",
+        "Будував і підтримував картографічний інтерфейс на базі LuciadRIA як основної картографічної бібліотеки.",
+        "Працював із GIS-даними, різними геореферентними системами, хмарами точок і 3D-тайлами.",
+        "Виконував оптимізацію продуктивності та діагностику/виправлення складних багів по всьому стеку, включно з бекендом."
+      ],
+      "stack": ["Angular 20", "LuciadRIA (RIA 2026)", "NgRx", "Angular Material", "GeoTIFF", "Highcharts", "ngx-translate", "TypeScript"],
+      "skills": ["Angular", "LuciadRIA", "NgRx", "GIS", "Хмари точок", "3D Tiles", "Геореферентні системи", "TypeScript", "Оптимізація продуктивності", "Діагностика складних багів"]
+    },
+    {
+      "title": "Інженер з розробки програмного забезпечення (Front-End)",
+      "company": "SPD-Technology / Spector.AI",
+      "project": "Spector AI",
+      "employment_period": { "start": "2020-11", "end": "2024-10", "current": false },
+      "scope": "Фронтенд на Angular та React; code review, консультації, оцінювання; участь у обговоренні напрямку розвитку проєктів.",
+      "responsibilities_and_achievements": [
+        "Проєктував, розробляв і підтримував веб-застосунки на Angular та React.",
+        "Проводив code review, консультації та оцінювання строків розробки.",
+        "Комунікував із клієнтом і командою, брав участь у формуванні roadmap.",
+        "Виконував рефакторинг, оптимізацію та документування."
+      ],
+      "stack": ["Angular", "React", "Three.js", "SASS", "GPU.js", "OpenLayers", "OpenCV.js"],
+      "skills": ["Angular", "React", "Three.js", "Оптимізація продуктивності", "Розгортання застосунків", "SASS", "GPU.js", "OpenLayers", "OpenCV.js", "Code review"]
+    },
+    {
+      "title": "Full Stack розробник",
+      "company": "MileStep LLC",
+      "projects": ["Froth", "Clyste", "Site of company Milestep"],
+      "employment_period": { "start": "2018-09", "end": "2020-11", "current": false },
+      "scope": "Full-stack на RoR / Jekyll / React / React Native; тестове покриття, CI/CD, докеризація, деплой.",
+      "responsibilities_and_achievements": [
+        "Розробляв і підтримував застосунки на Ruby on Rails, Jekyll, React та React Native.",
+        "Забезпечував тестове покриття, CI/CD, розгортання та контейнеризацію.",
+        "Вів текстову комунікацію з клієнтом."
+      ],
+      "stack": ["React", "React Native", "Webpack", "Ruby on Rails", "Docker", "jQuery"],
+      "skills": ["React", "React Native", "Webpack", "CI/CD", "jQuery", "Ruby on Rails", "Docker"]
+    },
+    {
+      "title": "Радіоінженер",
+      "company": "NovuMedical",
+      "employment_period": { "start": "2016-07", "end": "2018-07", "current": false },
+      "scope": "Підтримка внутрішньої програми обліку (C#, MySQL); ремонт брендової електроніки; ~3 роки практики з ESP32/Arduino.",
+      "responsibilities_and_achievements": [
+        "Підтримував внутрішню бухгалтерську програму на C# і MySQL.",
+        "Ремонтував брендову електроніку та встановлював програмне й апаратне забезпечення.",
+        "Створив детектор напрямку шуму на TDOA, автомобільний спідометр, псевдо-3D демо на ESP32-C3 і RF-модуль хвостового оперення літака; займався онлайн IoT та проекційним відображенням фотосканів із дронів."
+      ],
+      "stack": ["C#", "MySQL", "ESP32", "Arduino"],
+      "skills": ["C#", "MySQL", "ESP32", "Arduino", "RF / TDOA", "IoT"]
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "Veronica",
+      "ownership": "solo",
+      "period": { "start": "2026-05", "end": null },
+      "summary": "Продакшн e-commerce + CRM/ERP платформа для квіткового бізнесу. Усе від архітектури до інфраструктури — одноосібно.",
+      "role": "Founding engineer",
+      "stack": ["pnpm monorepo (6 застосунків)", "Fastify", "Next.js 15 (SSR/SSG)", "React + Vite SPA", "PostgreSQL 16", "Redis + BullMQ", "Zod", "SSE", "Docker Compose", "NGINX", "DigitalOcean", "Cloudflare", "WayForPay", "Telegram / self-hosted WhatsApp / Instagram", "Prometheus + GlitchTip + Uptime Kuma", "MCP server"],
+      "highlights": [
+        "Мультидроплетна топологія з NGINX-bastion і приватною мережею",
+        "Власний Bash-фреймворк деплою: rsync, git-diff гейтинг, test gate, blue-green викотка API, rollback, log-scan",
+        "RBAC 7 ролей + 2FA, HMAC webhooks, CSP+nonce, Idempotency-Key, Outbox pattern, audit log",
+        "Pricing-рушій з рекурсивним перерахунком BOM-собівартості; stocktaking, warehouse receipts",
+        "~100% production uptime, single-operator ops model"
+      ]
+    },
+    {
+      "name": "InfraCloud",
+      "ownership": "employer",
+      "period": { "start": "2024-10", "end": "2026-05" },
+      "url": "https://www.infracloud3d.com/en/",
+      "summary": "Геопросторова платформа управління / інспекції інфраструктури.",
+      "role": "Front-end / карти / 3D (~1.5 року); трохи бекенду — оптимізація, складні баги",
+      "stack": ["Angular 20", "LuciadRIA (RIA 2026)", "NgRx", "Angular Material", "GeoTIFF", "Highcharts", "ngx-translate", "TypeScript"],
+      "highlights": ["Картографічний інтерфейс на LuciadRIA", "GIS-дані, геореферентні системи", "Хмари точок, 3D-тайли", "Оптимізація та діагностика складних кросс-стек багів"]
+    },
+    {
+      "name": "Spector AI (SPD Technology)",
+      "ownership": "employer",
+      "period": { "start": "2021-07", "end": "2024-10" },
+      "summary": "AI-платформа для інспекції промислових об'єктів.",
+      "role": "Фронтенд застосунку, лендінг, розширення для DroneDeploy",
+      "stack": ["Angular", "React", "Three.js", "GPU.js", "OpenLayers", "OpenCV.js", "SASS"]
+    },
+    {
+      "name": "alter-space.biz.ua",
+      "ownership": "solo",
+      "period": { "start": "2019-06", "end": null },
+      "url": "https://alter-space.biz.ua/",
+      "summary": "Особистий полігон веб-проєктів, розгорнутий як один origin (templated NGINX + Cloudflare + deploy-all.sh оркестратор).",
+      "stack": ["NGINX (templated)", "Cloudflare", "Bash deploy orchestrator"],
+      "subprojects": [
+        {
+          "name": "meadowkeep",
+          "summary": "Процедурний open-world 3D RPG (у розробці).",
+          "stack": ["Three.js", "cannon-es", "three-mesh-bvh", "three-bvh-csg", "кастомні GLSL шейдери", "three.quarks (GPU-частинки)", "React 19", "Vite 6", "PWA", "Playwright", "Bun WebSocket мультиплеєр"],
+          "highlights": ["Voronoi-біоми", "Гідравлічна ерозія", "Infinite chunk streaming + LOD", "Poisson-disk розсіювання", "Модульні prefab-підземелля"]
+        },
+        {
+          "name": "gta-vc",
+          "summary": "GTA: Vice City (рушій reVC/revcDOS) у браузері через WebAssembly / Emscripten + Bun static server."
+        },
+        {
+          "name": "Note Keeper",
+          "url": "https://alter-space.biz.ua/note-keeper/",
+          "summary": "Markdown-нотатник PWA.",
+          "stack": ["React 18", "Vite 6", "Firebase (auth + Firestore)", "Recoil", "react-router", "marked", "версіонований service worker", "Jest + Testing Library"]
+        },
+        {
+          "name": "synthwave",
+          "summary": "Аудіовізуалізатор.",
+          "stack": ["Three.js", "Web Audio API", "oimo physics", "webpack + Babel"]
+        },
+        {
+          "name": "Classic Tetris",
+          "url": "https://alter-space.biz.ua/tetris/",
+          "summary": "Класичний Tetris.",
+          "stack": ["vanilla JS", "Canvas"]
+        },
+        {
+          "name": "screen-saver / water-pro / welcome-page",
+          "summary": "Невеликі React/Vite демо, симуляція води, лендінг."
+        }
+      ]
+    },
+    {
+      "name": "TinyPanel Studio",
+      "ownership": "solo",
+      "open_source": true,
+      "url": "https://github.com/Sany18/TinyPanel-Studio",
+      "summary": "Open-source студія для збірки, прошивки та стрімінгу Canvas-застосунків на ESP32-дисплеї.",
+      "stack": ["Node.js", "CodeMirror", "Hybrid Canvas renderer + RGB565", "ACK-controlled TCP streaming", "JPEG frame transport", "PlatformIO firmware builds + browser flashing", "ffmpeg"]
+    },
+    {
+      "name": "radiosniper",
+      "ownership": "solo",
+      "summary": "Full-stack сайт-каталог зображень.",
+      "stack": ["NestJS 11", "TypeORM", "PostgreSQL", "JWT / Passport", "@nestjs/throttler", "Sharp", "sshpk", "React 18", "React Router 7", "dual webpack apps"],
+      "highlights": ["Власні deploy / ssh / nginx скрипти", "UFW", "Генерація адмін-ключів по SSH"]
+    },
+    {
+      "name": "bro",
+      "ownership": "solo",
+      "summary": "Мінімальний веб-браузер з нуля.",
+      "stack": ["Rust"]
+    },
+    {
+      "name": "CV site + job-watcher",
+      "ownership": "solo",
+      "url": "https://sany18.github.io/cv/en",
+      "summary": "Персональний сайт-портфоліо (Next.js static export, i18n, JSON-LD, GitHub Actions → Pages) + локальний агрегатор вакансій (zero-dependency Node CLI/сервер: Djinni scrape, DOU/WWR RSS, RemoteOK JSON API)."
+    },
+    {
+      "name": "fto",
+      "ownership": "solo",
+      "machine": "x1",
+      "summary": "Платформа крипто-чартингу та аналізу ринку.",
+      "stack": ["Bun", "Hono", "Mongoose / MongoDB", "React 18", "Webpack", "Canvas OHLCV/candlestick charts", "Docker Compose (dev/prod/remote-dev)", "shared FE/BE monorepo"],
+      "highlights": [
+        "pd_detector (Ruby pump/dump сигнали) — написав друг, якому він розшарив проєкт; решта платформи його",
+        "Мігрував бекенд Express → Hono (route-parity)",
+        "Планований мультиметричний ансамбль: алгоритмічний TA + мультиагентне ШІ-прогнозування + новини + кросс-пара кореляція + funding/ліквідації/історія стакану",
+        "Self-hosted на x1"
+      ]
+    },
+    {
+      "name": "telegram_bot",
+      "ownership": "solo",
+      "machine": "x1",
+      "visibility": "private",
+      "summary": "Приватний Telegram-бот для керування та моніторингу сервера x1.",
+      "stack": ["Flask", "python-telegram-bot", "Telegram Mini App (initData HMAC)", "SSH reverse tunnel (localhost.run)", "Tailscale"],
+      "highlights": [
+        "/term — Telegram Mini App термінал (вивід зверху, інпут знизу)",
+        "/ai <запит> — non-interactive opencode agent",
+        "/status — uptime/disk/RAM/tailscale; будь-яке повідомлення → bash на x1",
+        "Публічний HTTPS URL Mini App через ssh -R на localhost.run"
+      ]
+    },
+    {
+      "name": "Froth",
+      "ownership": "collab",
+      "period": { "start": "2020-02", "end": "2020-09" },
+      "url": "https://www.instagram.com/frothcoffeeapp/",
+      "summary": "Мобільний застосунок замовлення кави для Кейптауна (команда з 2 осіб).",
+      "role": "Лендінг + мобільний застосунок + сервер; реліз у Play Store / App Store + підтримка",
+      "stack": ["Ruby on Rails", "React", "React Native", "Webpack", "CI/CD", "Docker"]
+    },
+    {
+      "name": "Clyste",
+      "ownership": "employer",
+      "period": { "start": "2019-08", "end": "2020-01" },
+      "summary": "Експериментальна платформа соціальних мереж.",
+      "role": "Відеодзвінки та чат",
+      "stack": ["WebSockets", "WebRTC", "Ruby on Rails", "React"]
+    },
+    {
+      "name": "carlink",
+      "ownership": "collab",
+      "summary": "Car-data API.",
+      "role": "Тільки DevOps — контейнеризація, деплой, ngrok-тунелювання (API — інший автор)",
+      "stack": ["Docker Compose (dev/prod overrides)", "deploy script", "ngrok"]
+    },
+    {
+      "name": "Embedded / hardware",
+      "ownership": "solo",
+      "summary": "Набір embedded-проєктів (триває).",
+      "items": [
+        { "name": "arduino", "summary": "ESP32-C3 скетчі: WiFi crypto ticker з candlestick-графіком, псевдо-3D демо, SPI TFT." },
+        { "name": "wroom-wroom", "summary": "ESP32-S3 мультипротокольний RF/RFID стенд: PN532 (13.56 МГц NFC), RDM6300 (125 кГц RFID), CC1101 (sub-GHz RF), ST7789." },
+        { "name": "wt32", "summary": "WT32-ETH01 (ESP32 + LAN8720A PHY) UART↔TCP міст між польовими станціями: dual TCP-вузол, кільцевий буфер, авто-reconnect." },
+        { "name": "FPV", "summary": "Збірка FPV-дрона: Betaflight + iNav прошивки, ELRS-лінк, параметричні OpenSCAD-кріплення." }
+      ]
+    },
+    {
+      "name": "xiaomi / smart-band",
+      "ownership": "solo",
+      "machine": "x1 (xiaomi) + laptop (smart-band публічна вибірка)",
+      "summary": "Toolkit reverse engineering носимих пристроїв Xiaomi.",
+      "stack": ["APK decompile (jadx, apktool)", "Xiaomi Quick App / HAP + RPK", "Mi Watch Lua watchfaces + uploader", "xiaomi-auth-sdk", "node-adb / ADB tooling", "BLE (Band 9 Pro V2 handshake)", "Gadgetbridge / Watchdrip"]
+    },
+    {
+      "name": "Homelab / ops (x1)",
+      "ownership": "solo",
+      "machine": "x1",
+      "summary": "Self-hosted сервіси на ops-станції.",
+      "stack": ["Pi-hole (DNS ad-blocking, docker)", "Minecraft dedicated server", "Tailscale mesh VPN", "Veronica Control Center", "backup-portai.sh (zstd/gzip + SHA-256 верифікація)"]
+    },
+    {
+      "name": "search-home-page",
+      "ownership": "solo",
+      "summary": "Нова стартова сторінка браузера з фільтрацією російського контенту у видачі Google.",
+      "stack": ["vanilla JS", "webpack 5", "Babel"]
+    }
+  ],
+
+  "domains": [
+    "3D веб-застосунки",
+    "Геопросторовий / інфраструктурна інспекція (GIS, LuciadRIA)",
+    "AI-інспекція промислових об'єктів",
+    "E-commerce (повна платформа)",
+    "CRM / клієнтські комунікації",
+    "Inventory & pricing / ERP back office",
+    "Платежі та рефанди",
+    "Крипто / аналіз фінансових ринків (OHLCV/TA, pump-dump, funding/ліквідації, стакан, backtesting)",
+    "Open-world ігрові рушії",
+    "Соцплатформи (відео/чат)",
+    "IoT / носимі пристрої / RF / FPV",
+    "Homelab / self-hosting"
+  ],
+
+  "education": {
+    "institution": "Черкаський державний технологічний університет",
+    "institution_en": "Cherkasy State Technological University",
+    "degree": "Бакалавр",
+    "specialization": "Економіка та управління: економічна кібернетика",
+    "period": { "start": "2011-09", "end": "2015-07" }
+  },
+
+  "languages_spoken": [
+    { "language": "Українська", "level": "Рідна" },
+    { "language": "Англійська", "level": "Advanced (C1)" },
+    { "language": "Російська", "level": "Уникаю" }
+  ],
+
+  "achievements": [
+    "Одноосібно спроєктував, побудував, розгорнув і підтримує Veronica — продакшн e-commerce + CRM/ERP платформу з власною мультихостовою інфраструктурою та blue-green пайплайном; ~100% uptime.",
+    "alter-space.biz.ua — self-hosted полігон, зокрема процедурний open-world 3D RPG і браузерний WASM-порт повного C++ ігрового рушія.",
+    "fto — власна платформа аналізу крипторинку (Bun/Hono + Mongo, кастомні Canvas-графіки); telegram_bot — повне керування сервером x1 з Telegram.",
+    "Open-source мейнтейнер: TinyPanel-Studio (платформа ESP32-дисплеїв).",
+    "GitHub: Arctic Code Vault Contributor, Pull Shark ×2, Quickdraw."
+  ],
+
+  "not_featured": {
+    "note": "Реальний досвід, але за замовчуванням тримати поза списком навичок публічного резюме (лишати в історії роботи).",
+    "items": [
+      { "name": "Ruby / Rails / Jekyll", "reason": "Досвід 2018–2020 (MileStep); більше не використовується. Лишати в секції досвіду. (Ruby-сервіс pd_detector у fto написав друг, не він.)" },
+      { "name": "C# / MySQL (роль радіоінженера)", "reason": "2016–2018; не релевантно як поточна навичка." },
+      { "name": "GPU.js / OpenCV.js", "reason": "Вузькі експерименти на одному проєкті; можна залишати низьким пріоритетом." },
+      { "name": "Reverse engineering / offensive security tooling", "reason": "Особисте дослідження; виносити лише за релевантної вакансії." }
+    ]
+  }
+}

@@ -72,7 +72,7 @@ export const translations = {
     },
     languages: {
       heading: 'Languages',
-      items: ['Ukrainian - Native', 'English - Upper-Intermediate (B2)', 'Russian - prefer to avoid'],
+      items: ['Ukrainian - Native', 'English - Advanced (C1)', 'Russian - prefer to avoid'],
     },
     projects: {
       heading: 'Projects',
@@ -171,7 +171,7 @@ export const translations = {
     },
     languages: {
       heading: 'Мови',
-      items: ['Українська — рідна', 'Англійська — вище середнього (B2)', 'Російська — уникаю'],
+      items: ['Українська — рідна', 'Англійська — просунутий (C1)', 'Російська — уникаю'],
     },
     projects: {
       heading: 'Проекти',
