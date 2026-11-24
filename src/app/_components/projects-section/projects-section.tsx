@@ -6,10 +6,16 @@ import { Time } from "@/components/time/time";
 
 const projectMeta = [
   {
+    url: null,
+    skills: 'Next.js 15 • React + Vite • Fastify • PostgreSQL • Redis/BullMQ • Zod • SSE • TanStack Query • Zustand • MCP • Docker • NGINX • Blue-green deploy • CI/CD',
+    start: '2026-05',
+    end: undefined,
+  },
+  {
     url: 'https://www.infracloud3d.com/en/',
     skills: 'LuciadRIA • GIS • Point Clouds • 3D Tiles • Geo-reference Systems • TypeScript',
     start: '2024-10',
-    end: undefined,
+    end: '2026-05',
   },
   {
     url: null,
@@ -37,18 +43,14 @@ const projectMeta = [
   },
   {
     url: 'https://alter-space.biz.ua/',
-    skills: 'ThreeJS (3d) • React • NodeJs/Express • WS • Webpack • JavaScript • CannonJS',
+    skills: 'WebAssembly/Emscripten • Free Pascal • Python tooling • ThreeJS (3d) • React • Service Worker/PWA • NGINX • Cloudflare • AI Agent Orchestration • Bash • TypeScript',
     start: '2019-06',
-    end: '2019-07',
-    subprojects: [
-      { url: 'https://alter-space.biz.ua/tetris/', label: 'Classic Tetris' },
-      { url: 'https://alter-space.biz.ua/3d-shooter', label: '3D shooter playground (demo)' },
-      { url: 'https://alter-space.biz.ua/note-keeper/', label: 'Note Keeper' },
-    ],
+    end: undefined,
   },
 ];
 
 const projectNames = [
+  'Veronica',
   'InfraCloud',
   'Spector AI (SPD Technology)',
   'Froth',
@@ -76,15 +78,6 @@ export const ProjectsSection = () => {
                 ? <h4><a href={meta.url} target='_blank' rel='noopener'>{name}</a></h4>
                 : <h4>{name}</h4>
               }
-
-              {'subprojects' in meta && meta.subprojects && (
-                <>
-                  <p><strong>{t.subprojectsLabel}</strong></p>
-                  {meta.subprojects.map((sp) => (
-                    <a key={sp.url} href={sp.url} target='_blank' rel='noopener'>{sp.label}</a>
-                  ))}
-                </>
-              )}
 
               <b>
                 <Time time={meta.start} /> - {meta.end ? <Time time={meta.end} /> : <Time />}

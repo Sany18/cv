@@ -5,14 +5,14 @@ export const translations = {
     present: 'Present',
     header: {
       name: 'Tantsiura Olexandr',
-      title: 'Software Systems Engineer (Web / 3D) / Founding Full-Stack Engineer',
+      title: 'Senior Front-End / Full-Stack Engineer — Web, 3D, WebAssembly',
       photoAlt: 'Olexandr Tantsiura profile photo',
       location: 'Ukraine, Cherkasy',
     },
     summary: {
       heading: 'Summary',
       body: (years: number, feYears: number) =>
-        `I\`m experienced Web Developer for more then ${years} years. I have knowledge in developing, testing, debugging, optimization, deployment and support of web applications. My journey started as full-stack developer but for the last ${feYears} years I have preferred only front-end development.`,
+        `Engineer with ${years}+ years shipping production web applications, ${feYears} of them focused on front-end for React/Angular product teams. Strongest at the hard end of the front end: 3D/GIS visualisation (LuciadRIA, Three.js, WebGL), WebAssembly and WebGPU, offline-first PWAs with gigabytes of data. As a founding engineer I also own the API, database and infrastructure: a production e-commerce + CRM platform with an omnichannel chat inbox and an LLM night assistant, and 25+ browser ports of Windows software. Open to remote full-time or B2B contract roles.`,
     },
     skills: {
       heading: 'Skills',
@@ -25,9 +25,9 @@ export const translations = {
       responsibilityLabel: 'Responsibility:',
       jobs: [
         {
-          title: 'Founding Full-Stack Engineer',
-          company: 'Self-employed',
-          responsibility: 'Single-handedly designing, building, and maintaining an end-to-end B2B CRM platform integrated with an e-commerce storefront for the floral industry. Full-cycle workflow automation covering supply chain, stock tracking, and retail/online sales. Multi-tenant architecture with secure, isolated contractor access (RBAC). Real-time integration between the CRM backend and the customer-facing storefront. Automated CI/CD, authentication, and monitoring, maintaining 100% production uptime.',
+          title: 'Founder & Lead Engineer',
+          company: 'Alter Space Tech',
+          responsibility: 'Own studio: porting Windows software to the browser, Mac/Linux and tablets, plus end-to-end products for clients. Single-handedly designing, building, and maintaining an end-to-end B2B CRM platform integrated with an e-commerce storefront for the floral industry. Full-cycle workflow automation covering supply chain, stock tracking, and retail/online sales. Multi-tenant architecture with secure, isolated contractor access (RBAC). Real-time integration between the CRM backend and the customer-facing storefront. Automated CI/CD, authentication, and monitoring, maintaining 100% production uptime. LLM-based night assistant in the chat inbox that answers customers and takes orders (switchable providers, cost tracking, scenario tests).',
         },
         {
           title: 'Software Systems Engineer (Web / 3D)',
@@ -77,8 +77,10 @@ export const translations = {
     projects: {
       heading: 'Projects',
       skillsLabel: 'Skills:',
-      subprojectsLabel: 'Subprojects:',
       items: [
+        {
+          description: 'Production e-commerce storefront and CRM/ERP for a flower business, built and operated solo as a pnpm monorepo of six apps: Next.js storefront, React admin SPA, Fastify API, control center and an MCP server. Unified chat inbox over Telegram, WhatsApp and Instagram, real-time order feed (SSE), WayForPay payments, background workers (BullMQ), multi-tenant access (RBAC), custom Bash deploy framework with blue-green releases and monitoring.',
+        },
         {
           description: 'Web application built around a 3D map environment for infrastructure management. Involves working with GIS data, multiple geo-reference systems, point clouds and 3D tiles. Here I gained hands-on experience with LuciadRIA as the core mapping library.',
         },
@@ -95,7 +97,7 @@ export const translations = {
           description: 'With this project I was introduced to parallax.js, jQuery opportunities and css filters. For me it was more like a techno demo then just a page. There were horisontal multi-layered parallax, a lot of presize animated particles, cursor highlighted background and more. First version of this site was the business card of the company in the first years of its life.',
         },
         {
-          description: 'Here I collect my web pet projects, which I wrote at various times out of curiosity. This is what I was able to compile and run, so I won\`t be surprised if something goes wrong',
+          description: 'The idea started as a collection of my web pet projects and grew into a hub for Ukrainian localization of classic PC games, organised together with like-minded volunteers who do the translations. I lead its development: 25+ released browser ports done nine different ways — C/C++ to WebAssembly, Delphi to Free Pascal to WASM, Windows XP in a browser VM, and original .exe files on a Win32/DirectX to WebGPU runtime; several are playable on phones with touch controls. Angular hub with a Go/PostgreSQL API, cloud saves and offline downloads of multi-GB games with delta updates. The community of localizers handles the translation work.',
         },
       ],
     },
@@ -104,14 +106,14 @@ export const translations = {
     present: 'Зараз',
     header: {
       name: 'Танцюра Олександр',
-      title: 'Інженер програмних систем (Web / 3D) / Full-Stack інженер-засновник',
+      title: 'Senior Front-End / Full-Stack інженер — Web, 3D, WebAssembly',
       photoAlt: 'Фото профілю Олександра Танцюри',
       location: 'Україна, Черкаси',
     },
     summary: {
       heading: 'Резюме',
       body: (years: number, feYears: number) =>
-        `Досвідчений веб-розробник із більш ніж ${years} роками досвіду. Маю знання в розробці, тестуванні, налагодженні, оптимізації, розгортанні та підтримці веб-застосунків. Мій шлях починався як full-stack розробник, але протягом останніх ${feYears} років я надаю перевагу виключно front-end розробці.`,
+        `Інженер із ${years}+ роками розробки продакшн-вебзастосунків, з них ${feYears} — фронтенд у продуктових командах на React/Angular. Найсильніший у складному фронтенді: 3D/GIS-візуалізація (LuciadRIA, Three.js, WebGL), WebAssembly і WebGPU, офлайн-PWA з гігабайтами даних. Як інженер-засновник також відповідаю за API, базу даних та інфраструктуру: продакшн-магазин + CRM з єдиним чат-інбоксом і нічним AI-асистентом, а також 25+ браузерних портів Windows-програм. Відкритий до віддаленої роботи full-time або B2B-контракту.`,
     },
     skills: {
       heading: 'Навички',
@@ -124,9 +126,9 @@ export const translations = {
       responsibilityLabel: 'Обов’язки:',
       jobs: [
         {
-          title: 'Full-Stack інженер-засновник',
-          company: 'Самозайнятість',
-          responsibility: 'Одноосібне проєктування, розробка та підтримка B2B CRM-платформи, інтегрованої з інтернет-магазином для квіткової галузі. Повна автоматизація операційних процесів: від управління постачанням та обліку залишків до роздрібних і онлайн-продажів. Мультитенантна архітектура з ізольованим доступом для підрядників (RBAC). Інтеграція в реальному часі між CRM-бекендом та клієнтським сайтом. Автоматизовані CI/CD, автентифікація та моніторинг — 100% безвідмовної роботи в продакшені.',
+          title: 'Засновник і провідний інженер',
+          company: 'Alter Space Tech',
+          responsibility: 'Власна студія: портування Windows-програм у браузер, на Mac/Linux і планшети, а також продукти під ключ для клієнтів. Одноосібне проєктування, розробка та підтримка B2B CRM-платформи, інтегрованої з інтернет-магазином для квіткової галузі. Повна автоматизація операційних процесів: від управління постачанням та обліку залишків до роздрібних і онлайн-продажів. Мультитенантна архітектура з ізольованим доступом для підрядників (RBAC). Інтеграція в реальному часі між CRM-бекендом та клієнтським сайтом. Автоматизовані CI/CD, автентифікація та моніторинг — 100% безвідмовної роботи в продакшені. Нічний AI-асистент у чат-інбоксі, що відповідає клієнтам і приймає замовлення (вибір провайдера, облік вартості, тест-сценарії).',
         },
         {
           title: 'Інженер програмних систем (Web / 3D)',
@@ -176,8 +178,10 @@ export const translations = {
     projects: {
       heading: 'Проекти',
       skillsLabel: 'Навички:',
-      subprojectsLabel: 'Підпроекти:',
       items: [
+        {
+          description: 'Продакшн-вітрина інтернет-магазину та CRM/ERP для квіткового бізнесу — розроблено й підтримується одноосібно як pnpm-монорепозиторій із шести застосунків: Next.js-вітрина, React-адмінка, Fastify API, control center та MCP-сервер. Єдиний чат-інбокс для Telegram, WhatsApp та Instagram, стрічка замовлень у реальному часі (SSE), платежі WayForPay, фонові воркери (BullMQ), мультитенантний доступ (RBAC), власний Bash-фреймворк деплою з blue-green релізами та моніторинг.',
+        },
         {
           description: 'Веб-застосунок побудований навколо 3D картографічного середовища для управління інфраструктурою. Включає роботу з GIS-даними, різними геореферентними системами, хмарами точок та 3D-тайлами. Тут я набув практичного досвіду роботи з LuciadRIA як основною картографічною бібліотекою.',
         },
@@ -194,7 +198,7 @@ export const translations = {
           description: 'З цим проектом я познайомився з parallax.js, можливостями jQuery та CSS-фільтрами. Для мене це було більше схоже на техно-демо, ніж просто сторінка. Там був горизонтальний багатошаровий параллакс, безліч точних анімованих частинок, підсвічений фоном курсор та багато іншого. Перша версія цього сайту була візитною карткою компанії в перші роки її існування.',
         },
         {
-          description: 'Тут я збираю свої веб-пет-проекти, написані в різний час із цікавості. Це те, що мені вдалося зібрати та запустити, тому не дивуйтеся, якщо щось піде не так.',
+          description: 'Ідея зародилась як збірка моїх веб-пет-проєктів і виросла в хаб української локалізації класичних ПК-ігор, організований разом з однодумцями-волонтерами, які роблять переклади. Я веду розробку: 25+ випущених браузерних портів, зроблених дев’ятьма способами — C/C++ у WebAssembly, Delphi через Free Pascal у WASM, Windows XP у віртуальній машині в браузері та оригінальні .exe на рушії Win32/DirectX → WebGPU; частина грається на телефонах із сенсорним керуванням. Хаб на Angular з API на Go/PostgreSQL, хмарні збереження та офлайн-завантаження ігор на кілька гігабайт із дельта-оновленнями. Спільнота локалізаторів займається перекладом.',
         },
       ],
     },

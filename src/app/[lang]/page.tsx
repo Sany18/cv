@@ -10,7 +10,7 @@ import { ProjectsSection } from '../_components/projects-section/projects-sectio
 
 import '../page.scss';
 
-const CV_URL = 'https://sany18.github.io/cv';
+const CV_URL = 'https://alter-space.biz.ua/cv';
 const START_YEAR = 2018;
 const FE_YEARS_OFFSET = 3;
 
@@ -80,7 +80,7 @@ function buildJsonLd(lang: Lang) {
       'JavaScript', 'TypeScript', 'Angular', 'React', 'Three.js',
       'AI Agents & Multi-Agent Orchestration', 'AI Output Validation & Quality Gates', 'MCP (Model Context Protocol)',
       '3D Web Development', 'GIS', 'LuciadRIA', 'Point Clouds', '3D Tiles',
-      'Node.js', 'WebRTC', 'WebSockets', 'Docker', 'Ruby on Rails',
+      'WebAssembly (Emscripten)', 'Node.js', 'WebRTC', 'WebSockets', 'Docker', 'Ruby on Rails',
       'React Native', 'CI/CD', 'Git', 'GitLab CI/CD', 'Jest', 'Webpack', 'PWA',
       'Full-Stack Architecture', 'Multi-tenant Architecture',
       'Role-Based Access Control (RBAC)', 'B2B CRM', 'DevOps',

@@ -12,7 +12,9 @@ export const SkillsCard = () => {
   ];
 
   const skills = [
-    'AI Agents & Orchestration', 'MCP (Model Context Protocol)',
+    'AI coding agents (Claude Code, OpenCode, Codex, Gemini)', 'Multi-agent orchestration',
+    'AI output validation & quality gates', 'Agent instruction engineering',
+    'MCP (Model Context Protocol)', 'WebAssembly/Emscripten',
     'Node.js', 'Express.js', 'WebRTC/WS', 'NGINX', 'Webpack', 'React Native', 'Expo',
     'jQuery', 'Docker', 'Shell Script', 'RoR', 'Ruby', 'Jekyll', 'Git', 'GitLab CI/CD', 'Jest',
     'Userscript/Tempermonkey/Chrome extensions', 'PWA',

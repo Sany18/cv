@@ -1,6 +1,8 @@
 # Olexandr Tantsiura — Master Skills Inventory
 
-*Compiled 2026-08-27. Sources: `docs/` notes, CV site source, `job-watcher/`, GitHub
+*Compiled 2026-08-27, updated 2026-11-24 (AST studio, WebPorts/BottleShip, Veronica AI assistant, LinkedIn).*
+
+*Originally compiled 2026-08-27. Sources: `docs/` notes, CV site source, `job-watcher/`, GitHub
 `github.com/Sany18`, `hoxzy.blogspot.com` / Medium `@parubok.sashko`, a 4-round skills
 survey, and a full scan of `~/allProjs` on **two machines** — the laptop and the `x1`
 Ubuntu workstation (`x1-tail`, user `sa`), which doubles as the ops / homelab box.*
@@ -37,6 +39,9 @@ experiment, no remote.
 | ├ **tetris** | solo | Classic Tetris | Vanilla JS + Canvas |
 | ├ **screen-saver / water-pro / welcome-page** | solo | Small React/Vite demos, water sim, landing | React 19 · Vite · SASS |
 | **radiosniper** | solo | Solo full-stack image-catalog site | NestJS 11 + **TypeORM** + Postgres · JWT/Passport · `@nestjs/throttler` · sharp · **sshpk** (SSH-key admin provisioning) · React 18 + React Router 7 · dual webpack apps (main + admin) · nginx + ufw deploy scripts |
+| **WebPorts** (`WEB-ports-split/alter-space*`) | lead | Alter Space hub + 25+ browser ports of Windows games/software | Angular hub · Go + PostgreSQL API · nginx + Cloudflare · Service Worker cache v2 (content-addressed blobs, delta updates, OPFS) · Emscripten/WASM · v86 · ~50 concurrent players on 2× $6 droplets |
+| **bottleship** | contributor | Open-source x86 Windows-exe runtime for the browser (base of Alter86) | TypeScript · WebGPU · WebAudio · OPFS · v86 fork — 50 commits (D3D9, x87, storage, streaming) |
+| **AST** (alter-space.tech) | solo | Own studio: porting Windows software to browser/Mac/Linux/tablets; site + brand | Astro site · design system (tokens) · Cloudflare · LinkedIn/Sales Navigator lead process |
 | **cv** | solo | Personal portfolio website + `job-watcher` tool | Next.js static export · i18n routing · JSON-LD · GitHub Actions → Pages · zero-dep Node CLI/scraper |
 | **TinyPanel-Studio** | solo | Open-source studio to build/flash/stream Canvas apps to ESP32 displays | Node server · CodeMirror · hybrid Canvas renderer + RGB565 · **ACK-controlled TCP** streaming · JPEG frame transport · PlatformIO firmware builds + browser flashing · ffmpeg |
 | **bro** | solo | From-scratch minimal web browser | **Rust** |
@@ -73,6 +78,7 @@ experiment, no remote.
 | SQL (PostgreSQL, incl. PostGIS) | **Strong** | veronica (raw `pg`, hand-written migrations, recursive cost recalculation); port_AI (Knex + PostGIS spatial); radiosniper/carlink (TypeORM) |
 | Bash / Shell | **Strong** | veronica + alter-space + radiosniper deploy frameworks, `Sany18/bash`, job-watcher, CI |
 | C / C++ | **Working** | ESP32/Arduino firmware — arduino, wroom-wroom, wt32, TinyPanel |
+| Go | **Working** | `alter-space-api-go` — Go API + PostgreSQL for the Alter Space hub (Google sign-in, rotating sessions, cloud game saves over SFTP); 31 of 33 commits his |
 | Python | **Working** | `telegram_bot` (Flask API + `python-telegram-bot`), `ai` (gRPC client + web build), tooling scripts |
 | Rust | **Exploratory** | `bro` — from-scratch browser |
 | Lua | **Exploratory** | `xiaomi` — Mi Watch Lua watchfaces |
@@ -126,6 +132,11 @@ experiment, no remote.
 | Real-time multiplayer / netcode | **Working** | meadowkeep — Bun WebSocket server; Clyste (WS/WebRTC) |
 | WebAssembly / Emscripten | **Working** | gta-vc — running a compiled C++ game engine in-browser |
 | Canvas 2D API | **Strong** | canvas-to-console-art, TinyPanel hybrid renderer + RGB565, tetris, `fto` custom OHLCV/candlestick charts |
+| WebGPU | **Working** | BottleShip / Alter86 — Direct3D 3–9 → WebGPU translation; contributed D3D9 batch scheduling (retire batch when GPU finished) |
+| x86 emulation in the browser (v86, HLE Win32/COM) | **Working** | own fork `Sany18/v86-alter` (x87 precision-control path); Windows XP VM demo (demo.alter-space.tech); Alter86 runtime loads PE executables and reimplements Win32 |
+| Software porting (9 paths) | **Strong** | WebPorts — 25+ released ports: C/C++→WASM with replaced platform layer (Cossacks), Delphi→Free Pascal→WASM (Space Rangers HD), decompile→TypeScript with oracle, open engines + data conversion (GTA VC, HoMM3, Half-Life), static x86→WASM recompilation, v86 VMs, J2ME emulation; touch layouts for phones |
+| Wine / Proton packaging | **Working** | used as oracle build for Space Rangers HD → TypeScript; per studio direction doc |
+| Offline-first large data (OPFS, content-addressed blobs, delta updates) | **Strong** | WebPorts cache v2 — 32 MB / 4 MB content-addressed blobs, Range resume, hash verification, immutable caching, version switch on next launch; multi-GB games offline |
 | Web Audio API | **Working** | synthwave sound visualiser |
 | LuciadRIA | **Strong** | InfraCloud / port_AI — core mapping library (RIA 2026) |
 | GIS / geo-reference systems | **Strong** | InfraCloud / port_AI — 1.5 yr on the front-end for maps, CRS handling, geotiff rasters, 3D tiles, point clouds |
@@ -253,7 +264,7 @@ experiment, no remote.
 | Skill | Tier | Evidence |
 |---|---|---|
 | AI coding agents / CLIs | **Strong** | **Claude Code, OpenCode, OpenAI Codex CLI, GitHub Copilot CLI, Google Antigravity / Gemini** — all installed & used on x1 and the laptop, pair programming & engineering automation across cv, veronica, port_AI, fto, note-keeper, carlink, ai, reser |
-| Multi-agent orchestration & subagents | **Strong** | Task decomposition into specialized roles (researcher, planner, coder, reviewer), context sharing, handoffs, parallel agent coordination, prompt chaining |
+| Multi-agent orchestration & subagents | **Strong** | Built and ran a 10-agent orchestrator for the Space Rangers HD port (WEB-ports/revers-engineering-data/ai-docs, 2026-10): one Claude Code session as orchestrator + 10 parallel `opencode` agents, each in its own git worktree and its own ProtonVPN-routed Docker pair (gluetun kill-switch, per-agent IP); queue-driven task issue, watchdog (NetIO stall detection), stray-process reaper, per-event autosave branch, retry/recreate policy for rate limits; narrow task files with machine-checkable acceptance (oracle parity, `tsc`, per-task checkers, `task_gate` against invented tasks); mandatory report-vs-code review before merge; incident log turned into rules. Also task decomposition into specialised roles, handoffs, prompt chaining |
 | AI Output Validation & Quality Gates | **Strong** | Strict schema validation (Zod, structured outputs), automated test-gated execution (Vitest, Jest, Playwright before commits/deploys), linter gates (oxlint/ESLint), hallucination mitigation, human-in-the-loop review |
 | Agent-instruction engineering & context design | **Strong** | veronica `CLAUDE.md`/`AGENTS.md` + self-maintaining `.github/instructions/*`; `.mcp.json`; dynamic context priming, per-repo instructions in port_AI, fto, carlink, reser, wt32, note-keeper, search-home-page |
 | MCP (Model Context Protocol) server development | **Working** | veronica `apps/mcp-server` — `@modelcontextprotocol/sdk`, stdio transport, Zod-typed tools for DB/API tool access |
@@ -261,7 +272,8 @@ experiment, no remote.
 | Multi-agent forecasting design | **Exploratory** | `fto` — planned ensemble where several AI agents each return an independent directional index (`agent-orchestration-plan.md`) |
 | Prompt engineering / pipeline automation | **Working** | Prompt-driven scripts, `local-setup/agent-usage.sh`, reproducible migration and codegen pipelines |
 | Local image-gen & ML models over API | **Working** | `ai` — web UI client for Draw Things' gRPC server; built + bundled the frontend; Ollama / llama.cpp exploration |
-| LLM API integration in shipped products (RAG, embeddings, agents) | *Emerging* | not yet a product claim |
+| LLM integration in a shipped product | **Working** | veronica — AI night assistant in the CRM inbox (pilot): OpenAI / Gemini providers switchable from settings, per-message cost tracking (`ai-cost.util.ts` + tests), outbound-echo dedup, chat defences against prompt injection, staff test-chat tab, scenario tests |
+| RAG / embeddings | *Gap* | not yet a product claim |
 
 ## 10. Browser extensions / userscripts / automation / scraping
 

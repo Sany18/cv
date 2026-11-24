@@ -15,7 +15,7 @@ const jobDates = [
 ];
 
 const jobSkills = [
-  'Full-Stack Architecture • Multi-tenant Architecture • RBAC • Node.js • CI/CD • DevOps',
+  'Full-Stack Architecture • Next.js • React • Fastify • PostgreSQL • LLM integration • WebAssembly • CI/CD • DevOps',
   'LuciadRIA • GIS • Point Clouds • 3D Tiles • Geo-reference Systems • TypeScript',
   'Angular • React • Three Js (3D) • Optimizing Performance • Software Deployment • SASS',
   'React Js • React Native • Webpack • CI/CD • jQuery • Ruby on Rails',

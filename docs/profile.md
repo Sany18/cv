@@ -7,7 +7,7 @@ ops / homelab workstation).*
 
 ## Contact
 - **Name:** Tantsiura Olexandr (Olexandr Tantsiura / Alexandr Tantsiura)
-- **Title:** Software Systems Engineer (Web / 3D) / Founding Full-Stack Engineer
+- **Title:** Senior Front-End / Full-Stack Engineer — Web, 3D, WebAssembly (Founder, Alter Space Tech)
 - **Location:** Cherkasy, Ukraine — remote-friendly, Europe/Kyiv
 - **Email:** parubok.sashko@gmail.com
 - **Phone:** +380633884959
@@ -23,7 +23,11 @@ Web developer with 8+ years of experience developing, testing, debugging, optimi
 deploying and supporting web applications. Started as a full-stack developer; for ~5 years
 focused on front-end, most recently on 3D/GIS web applications. Most recently designed, built,
 and now operates an entire e-commerce + CRM/ERP product solo — front-end, backend, database,
-and multi-host infrastructure with a blue-green deploy pipeline.
+and multi-host infrastructure with a blue-green deploy pipeline — including an LLM-based night
+assistant in its chat inbox. In parallel leads WebPorts: 25+ browser ports of Windows software
+(WebAssembly, v86, HLE Win32/DirectX → WebGPU), Angular hub + Go API, multi-GB offline delivery.
+Since Nov 2026 runs Alter Space Tech, a small studio porting legacy Windows software to the
+browser, Mac/Linux and tablets. Open to remote full-time or B2B contract roles.
 
 ## Skills
 
@@ -124,8 +128,13 @@ Agile, mentoring / consultations, requirements & roadmap shaping, technical writ
 
 ## Experience
 
-### Founding Full-Stack Engineer — Self-employed *(project: Veronica)*
-*May 2026 – Present (Ukraine, on-site)*
+### Founder & Lead Engineer — Alter Space Tech *(own studio; project: Veronica, WebPorts)*
+*May 2026 – Present (remote)*
+- AI night assistant (pilot) in the CRM inbox: answers customers and takes orders overnight;
+  switchable OpenAI / Gemini providers, cost tracking, prompt-injection defences, scenario tests.
+- Studio line: porting Windows desktop software to the browser / Mac / Linux / tablets;
+  fixed-price portability audits based on the WebPorts work.
+
 Single-handedly designed, built, and maintain an end-to-end B2B CRM/ERP platform integrated
 with an e-commerce storefront for the floral industry.
 

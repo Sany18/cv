@@ -1,13 +1,13 @@
 :root {
-  --border-radius: 0.5rem;
-  --dark-gray: #202020;
-  --gray: #9f9f9f;
-  --gray-2: #606060;
-  --light-gray: #dfdfdf;
-  --accent: #3aaa72;
-  --bg-page: #f4fdf8;
-  --bg-card: #ffffff;
-  --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --border-radius: 0.75rem;
+  --dark-gray: #2f3745;
+  --gray: #6b7280;
+  --gray-2: #4b5563;
+  --light-gray: #e5e7eb;
+  --accent: #ff6b35;
+  --bg-page: #edf1f5;
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --shadow: 0 12px 30px rgba(31, 41, 55, 0.08);
 }
 
 .border-radius { border-radius: var(--border-radius); }
