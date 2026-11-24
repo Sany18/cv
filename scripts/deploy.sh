@@ -35,7 +35,7 @@ else
 fi
 
 # replace the branch contents with the fresh export
-git -C "$WT" rm -rq --ignore-unmatch .
+git -C "$WT" rm -rfq --ignore-unmatch .
 find "$WT" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 cp -R out/. "$WT/"
 touch "$WT/.nojekyll"   # keep _next/ (Jekyll would drop underscore dirs)
