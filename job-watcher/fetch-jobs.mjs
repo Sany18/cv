@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { config } from "./config.mjs";
 import { fetchDjinni, fetchDou, fetchRemoteOk, fetchWeWorkRemotely } from "./sources.mjs";
+import { annotateSkills } from "./skill-match.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = path.join(__dirname, "data");
@@ -47,6 +48,14 @@ export async function fetchAllJobs() {
   const cutoff = now - config.newWindowMs * 4;
   for (const [id, ts] of Object.entries(seen)) {
     if (new Date(ts).getTime() < cutoff) delete seen[id];
+  }
+
+  if (config.skillMatch?.enabled !== false) {
+    try {
+      await annotateSkills(jobs);
+    } catch (err) {
+      console.warn(`[skill-match] skipped: ${err.message}`);
+    }
   }
 
   jobs.sort((a, b) => new Date(b.postedAt || b.firstSeenAt) - new Date(a.postedAt || a.firstSeenAt));

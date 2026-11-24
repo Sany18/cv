@@ -1,13 +1,20 @@
 const UA = "Mozilla/5.0 (compatible; personal-job-watcher/1.0; local use)";
+const DEFAULT_TIMEOUT_MS = 20000;
 
-export async function fetchText(url) {
-  const res = await fetch(url, { headers: { "User-Agent": UA } });
+export async function fetchText(url, { timeoutMs = DEFAULT_TIMEOUT_MS } = {}) {
+  const res = await fetch(url, {
+    headers: { "User-Agent": UA },
+    signal: AbortSignal.timeout(timeoutMs),
+  });
   if (!res.ok) throw new Error(`${url} -> HTTP ${res.status}`);
   return res.text();
 }
 
-export async function fetchJson(url) {
-  const res = await fetch(url, { headers: { "User-Agent": UA, Accept: "application/json" } });
+export async function fetchJson(url, { timeoutMs = DEFAULT_TIMEOUT_MS } = {}) {
+  const res = await fetch(url, {
+    headers: { "User-Agent": UA, Accept: "application/json" },
+    signal: AbortSignal.timeout(timeoutMs),
+  });
   if (!res.ok) throw new Error(`${url} -> HTTP ${res.status}`);
   return res.json();
 }

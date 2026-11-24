@@ -8,10 +8,12 @@
     color-scheme: light dark;
     --bg: #ffffff; --fg: #1a1a1a; --muted: #6b7280; --border: #e5e7eb;
     --card: #f9fafb; --accent: #2563eb; --new: #16a34a; --new-bg: #dcfce7;
+    --col-bg: #f3f4f6; --drop-hl: #dbeafe;
   }
   @media (prefers-color-scheme: dark) {
     :root { --bg: #0f1115; --fg: #e5e7eb; --muted: #9ca3af; --border: #262a33;
-      --card: #171a21; --accent: #60a5fa; --new: #4ade80; --new-bg: #103a20; }
+      --card: #171a21; --accent: #60a5fa; --new: #4ade80; --new-bg: #103a20;
+      --col-bg: #14161c; --drop-hl: #1e2b45; }
   }
   * { box-sizing: border-box; }
   body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -28,17 +30,73 @@
   input[type="text"] { padding: 0.5rem 0.75rem; border: 1px solid var(--border); border-radius: 6px;
     background: var(--bg); color: var(--fg); font-size: 0.9rem; min-width: 220px; }
   .sources label { font-size: 0.85rem; margin-right: 0.75rem; color: var(--muted); }
-  main { max-width: 900px; margin: 0 auto; padding: 1rem 1.5rem 3rem; }
+  main { padding: 1rem 1.5rem 3rem; }
+  .board { display: grid; grid-template-columns: repeat(3, minmax(280px, 1fr)); gap: 1rem;
+    align-items: start; overflow-x: auto; }
+  @media (max-width: 900px) {
+    .board { grid-template-columns: 1fr; overflow-x: visible; }
+  }
+  .column { background: var(--col-bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 0.75rem; min-height: 200px; transition: background-color 0.15s ease; }
+  .column.drag-over { background: var(--drop-hl); }
+  .column-head { display: flex; justify-content: space-between; align-items: baseline;
+    padding: 0.15rem 0.25rem 0.75rem; }
+  .column-head h2 { font-size: 0.9rem; margin: 0; }
+  .column-head .count { color: var(--muted); font-size: 0.8rem; }
   .job { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-    padding: 0.9rem 1.1rem; margin-bottom: 0.7rem; }
+    padding: 0.9rem 1.1rem; margin-bottom: 0.7rem; cursor: grab; }
+  .job:active { cursor: grabbing; }
   .job-top { display: flex; justify-content: space-between; gap: 0.5rem; align-items: baseline; }
   .job a { color: var(--fg); text-decoration: none; font-weight: 600; }
   .job a:hover { color: var(--accent); }
   .job-sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.25rem; }
+  .job-actions { margin-top: 0.5rem; }
+  .job-actions button { background: none; border: 1px solid var(--border); color: var(--muted);
+    padding: 0.2rem 0.55rem; font-size: 0.7rem; border-radius: 6px; }
+  .job-actions button:hover { border-color: var(--accent); color: var(--accent); }
   .badge { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 999px; white-space: nowrap; }
   .badge.new { background: var(--new-bg); color: var(--new); font-weight: 700; }
   .badge.source { background: var(--border); color: var(--muted); }
+  .badge.cv { background: var(--drop-hl); color: var(--accent); font-weight: 700; }
+  .badge.skill { background: var(--drop-hl); color: var(--accent); font-weight: 700; }
+  .job-skills { margin-top: 0.45rem; display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .chip { font-size: 0.68rem; padding: 0.1rem 0.4rem; border-radius: 5px;
+    background: var(--col-bg); border: 1px solid var(--border); color: var(--muted); }
+  .chip.more { border-style: dashed; }
   #empty { color: var(--muted); padding: 2rem 0; text-align: center; }
+  .hidden-section { margin-top: 1rem; border: 1px solid var(--border); border-radius: 10px;
+    background: var(--col-bg); transition: background-color 0.15s ease; }
+  .hidden-section.drag-over { background: var(--drop-hl); }
+  .hidden-toggle { display: flex; align-items: center; gap: 0.5rem; width: 100%;
+    background: none; color: var(--fg); border: none; padding: 0.6rem 0.9rem;
+    font-size: 0.85rem; cursor: pointer; text-align: left; border-radius: 10px; }
+  .hidden-toggle .count { color: var(--muted); font-weight: normal; }
+  .hidden-body { padding: 0 0.75rem 0.75rem;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem; }
+  .job-actions button.cv { border-color: var(--accent); color: var(--accent); }
+  .job-actions button.cv:disabled { opacity: 0.5; }
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    display: flex; align-items: flex-start; justify-content: center; padding: 3vh 1rem; z-index: 50; }
+  .modal-backdrop[hidden] { display: none; }
+  .modal { background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
+    width: min(920px, 100%); max-height: 94vh; display: flex; flex-direction: column; }
+  .modal-head { display: flex; align-items: center; gap: 0.75rem; padding: 0.9rem 1.1rem;
+    border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .modal-head h2 { font-size: 0.95rem; margin: 0; flex: 1; min-width: 160px; }
+  .modal-tabs { display: flex; gap: 0.4rem; padding: 0.5rem 1.1rem; flex-wrap: wrap;
+    border-bottom: 1px solid var(--border); }
+  .tab { background: none; border: 1px solid var(--border); color: var(--muted);
+    padding: 0.3rem 0.7rem; font-size: 0.8rem; border-radius: 6px; cursor: pointer; }
+  .tab.active { border-color: var(--accent); color: var(--accent); }
+  .tab.err { border-color: #b91c1c; color: #b91c1c; }
+  .modal-body { padding: 1.1rem 1.4rem; overflow: auto; }
+  .modal-body .err { color: #b91c1c; white-space: pre-wrap; }
+  .modal-body h1 { font-size: 1.3rem; } .modal-body h2 { font-size: 1.05rem; margin-top: 1.2rem; }
+  .modal-body h3 { font-size: 0.95rem; } .modal-body table { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
+  .modal-body th, .modal-body td { border: 1px solid var(--border); padding: 0.35rem 0.55rem; text-align: left; vertical-align: top; }
+  .modal-body code { background: var(--card); padding: 0.05rem 0.3rem; border-radius: 4px; font-size: 0.85em; }
+  .modal-body pre { background: var(--card); padding: 0.8rem; border-radius: 8px; overflow: auto; }
+  .modal-note { color: var(--muted); font-size: 0.8rem; padding: 0 1.4rem 1rem; }
 </style>
 </head>
 <body>
@@ -55,20 +113,92 @@
   <label style="font-size:0.85rem;color:var(--muted)">
     <input type="checkbox" id="newOnly" /> new only
   </label>
+  <label style="font-size:0.85rem;color:var(--muted)">
+    skills ≥ <input type="number" id="minSkills" min="0" step="1" value="0"
+      style="width:3.2rem;padding:0.35rem 0.4rem" />
+  </label>
+  <label style="font-size:0.85rem;color:var(--muted)">
+    <input type="checkbox" id="sortSkill" /> sort by skill match
+  </label>
 </div>
 <main>
-  <div id="list"></div>
+  <div class="board">
+    <div class="column" id="col-inbox" data-status="inbox">
+      <div class="column-head"><h2>Inbox</h2><span class="count" id="count-inbox"></span></div>
+    </div>
+    <div class="column" id="col-visited" data-status="visited">
+      <div class="column-head"><h2>Visited</h2><span class="count" id="count-visited"></span></div>
+    </div>
+    <div class="column" id="col-interesting" data-status="interesting">
+      <div class="column-head"><h2>Interesting</h2><span class="count" id="count-interesting"></span></div>
+    </div>
+  </div>
+
+  <div class="hidden-section" id="col-hidden" data-status="hidden">
+    <button class="hidden-toggle" id="hidden-toggle" aria-expanded="false">
+      <span id="hidden-arrow">▶</span> Not interesting <span class="count" id="count-hidden"></span>
+    </button>
+    <div class="hidden-body" id="hidden-body" hidden></div>
+  </div>
+
   <div id="empty" hidden>No jobs match the current filters.</div>
 </main>
 
+<div class="modal-backdrop" id="cv-modal" hidden>
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="cv-modal-title">CV</h2>
+      <button type="button" id="cv-copy">Copy</button>
+      <button type="button" id="cv-download">Download .md</button>
+      <button type="button" id="cv-pdf" title="Opens a print view — choose “Save as PDF”">PDF</button>
+      <button type="button" id="cv-close">Close</button>
+    </div>
+    <div class="modal-tabs" id="cv-backend-tabs"></div>
+    <div class="modal-tabs">
+      <button type="button" class="tab active" data-view="cv">CV</button>
+      <button type="button" class="tab" data-view="match">Match report</button>
+    </div>
+    <div class="modal-note" id="cv-modal-note"></div>
+    <div class="modal-body" id="cv-modal-body"></div>
+  </div>
+</div>
+
 <script>
   let state = { fetchedAt: null, jobs: [] };
+  let cvIndex = {}; // job id -> { slug, generatedAt, versions:[{backend,ok}] }
   const activeSources = new Set();
   const AUTO_REFRESH_MS = 15 * 60 * 1000;
+  const STATUS_KEY = "jobwatcher.status";
+  const ALL_STATUSES = ["inbox", "visited", "interesting", "hidden"];
+  let statuses = JSON.parse(localStorage.getItem(STATUS_KEY) || "{}");
+  let hiddenOpen = false;
+  const MIN_SKILLS_KEY = "jobwatcher.minSkills";
+  const SORT_SKILL_KEY = "jobwatcher.sortSkill";
+
+  function getStatus(id) {
+    return statuses[id] || "inbox";
+  }
+
+  function setStatus(id, status) {
+    if (status === "inbox") delete statuses[id];
+    else statuses[id] = status;
+    localStorage.setItem(STATUS_KEY, JSON.stringify(statuses));
+  }
+
+  async function loadCvIndex() {
+    try {
+      const res = await fetch("/api/cv/list");
+      if (!res.ok) throw new Error("HTTP " + res.status + " (restart the server — this route is new)");
+      cvIndex = await res.json();
+    } catch (err) {
+      cvIndex = {};
+      console.warn("[job-watcher] could not load generated-CV index:", err.message);
+    }
+  }
 
   async function loadJobs() {
-    const res = await fetch("/api/jobs");
-    state = await res.json();
+    const [jobs] = await Promise.all([fetch("/api/jobs").then((r) => r.json()), loadCvIndex()]);
+    state = jobs;
     if (activeSources.size === 0) {
       new Set(state.jobs.map((j) => j.source)).forEach((s) => activeSources.add(s));
     }
@@ -83,6 +213,7 @@
     try {
       const res = await fetch("/api/refresh", { method: "POST" });
       state = await res.json();
+      await loadCvIndex();
       render();
     } finally {
       btn.disabled = false;
@@ -106,10 +237,49 @@
     });
   }
 
+  function jobCardHtml(j, status) {
+    const when = j.postedAt || j.firstSeenAt;
+    const whenStr = when
+      ? new Date(when).toLocaleDateString(undefined, {
+          year: "numeric", month: "short", day: "numeric",
+          hour: "2-digit", minute: "2-digit", hour12: false,
+        })
+      : "";
+    const actionBtn = status === "hidden"
+      ? `<button type="button" data-action="restore" data-id="${escapeHtml(j.id)}">Restore</button>`
+      : `<button type="button" data-action="hide" data-id="${escapeHtml(j.id)}">Not interesting</button>`;
+    const cv = cvIndex[j.id];
+    const cvOkN = cv ? cv.versions.filter((v) => v.ok).length : 0;
+    const cvBtns = cv
+      ? `<button type="button" class="cv" data-cv-view="${escapeHtml(j.id)}">View CV (${cvOkN})</button>
+         <button type="button" data-cv-regen="${escapeHtml(j.id)}" title="Regenerate">↻</button>`
+      : `<button type="button" class="cv" data-cv-gen="${escapeHtml(j.id)}">Generate CV</button>`;
+    return `
+    <div class="job" draggable="true" data-id="${escapeHtml(j.id)}">
+      <div class="job-top">
+        <a href="${j.url}" target="_blank" rel="noopener" draggable="false" data-id="${escapeHtml(j.id)}">${escapeHtml(j.title)}</a>
+        <span class="badge source">${j.source}</span>
+      </div>
+      <div class="job-sub">
+        ${escapeHtml(j.company || "")}${j.company ? " · " : ""}${escapeHtml(j.location || "")}
+        ${whenStr ? " · " + whenStr : ""}
+        ${j.isNew ? '<span class="badge new">NEW</span>' : ""}
+        ${cv ? `<span class="badge cv" title="CV created ${new Date(cv.generatedAt).toLocaleString()}">CV</span>` : ""}
+        ${j.skills && j.skills.length ? `<span class="badge skill" title="skill-match score ${j.skillScore}">⚡${j.skills.length}</span>` : ""}
+      </div>
+      ${j.skills && j.skills.length ? `<div class="job-skills">${j.skills.slice(0, 6).map((s) => `<span class="chip">${escapeHtml(s)}</span>`).join("")}${j.skills.length > 6 ? `<span class="chip more">+${j.skills.length - 6}</span>` : ""}</div>` : ""}
+      <div class="job-actions">
+        ${cvBtns}
+        ${actionBtn}
+      </div>
+    </div>`;
+  }
+
   function render() {
     const q = document.getElementById("search").value.trim().toLowerCase();
     const newOnly = document.getElementById("newOnly").checked;
-    const list = document.getElementById("list");
+    const minSkills = Math.max(0, parseInt(document.getElementById("minSkills").value, 10) || 0);
+    const sortBySkill = document.getElementById("sortSkill").checked;
     const meta = document.getElementById("meta");
 
     meta.textContent = state.fetchedAt
@@ -119,43 +289,361 @@
     const filtered = state.jobs.filter((j) => {
       if (!activeSources.has(j.source)) return false;
       if (newOnly && !j.isNew) return false;
+      if (minSkills && (j.skills ? j.skills.length : 0) < minSkills) return false;
       if (q && !(`${j.title} ${j.company}`.toLowerCase().includes(q))) return false;
       return true;
     });
 
+    if (sortBySkill) filtered.sort((a, b) => (b.skillScore || 0) - (a.skillScore || 0));
+
     document.getElementById("empty").hidden = filtered.length !== 0;
-    list.innerHTML = filtered
-      .map((j) => {
-        const when = j.postedAt || j.firstSeenAt;
-        const whenStr = when
-          ? new Date(when).toLocaleDateString(undefined, {
-              year: "numeric", month: "short", day: "numeric",
-              hour: "2-digit", minute: "2-digit", hour12: false,
-            })
-          : "";
-        return `
-        <div class="job">
-          <div class="job-top">
-            <a href="${j.url}" target="_blank" rel="noopener">${escapeHtml(j.title)}</a>
-            <span class="badge source">${j.source}</span>
-          </div>
-          <div class="job-sub">
-            ${escapeHtml(j.company || "")}${j.company ? " · " : ""}${escapeHtml(j.location || "")}
-            ${whenStr ? " · " + whenStr : ""}
-            ${j.isNew ? '<span class="badge new">NEW</span>' : ""}
-          </div>
-        </div>`;
-      })
-      .join("");
+
+    const byStatus = { inbox: [], visited: [], interesting: [], hidden: [] };
+    for (const j of filtered) byStatus[getStatus(j.id)].push(j);
+
+    const cardContainer = {
+      inbox: document.getElementById("col-inbox"),
+      visited: document.getElementById("col-visited"),
+      interesting: document.getElementById("col-interesting"),
+      hidden: document.getElementById("hidden-body"),
+    };
+
+    for (const status of ALL_STATUSES) {
+      const container = cardContainer[status];
+      container.querySelectorAll(".job").forEach((n) => n.remove());
+      container.insertAdjacentHTML("beforeend", byStatus[status].map((j) => jobCardHtml(j, status)).join(""));
+      document.getElementById(`count-${status}`).textContent = byStatus[status].length;
+
+      container.querySelectorAll(".job").forEach((card) => {
+        card.addEventListener("dragstart", (e) => {
+          e.dataTransfer.setData("text/plain", card.dataset.id);
+        });
+      });
+      container.querySelectorAll("a[data-id]").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (getStatus(link.dataset.id) === "inbox") {
+            setStatus(link.dataset.id, "visited");
+            render();
+          }
+        });
+      });
+      container.querySelectorAll("button[data-action]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          setStatus(btn.dataset.id, btn.dataset.action === "hide" ? "hidden" : "inbox");
+          render();
+        });
+      });
+      container.querySelectorAll("button[data-cv-gen]").forEach((btn) => {
+        btn.addEventListener("click", () => generateCvFor(btn.dataset.cvGen, btn, false));
+      });
+      container.querySelectorAll("button[data-cv-regen]").forEach((btn) => {
+        btn.addEventListener("click", () => generateCvFor(btn.dataset.cvRegen, btn, true));
+      });
+      container.querySelectorAll("button[data-cv-view]").forEach((btn) => {
+        btn.addEventListener("click", () => viewCvFor(btn.dataset.cvView, btn));
+      });
+    }
+
+    document.getElementById("hidden-body").hidden = !hiddenOpen;
   }
 
   function escapeHtml(str) {
     return str.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   }
 
+  for (const status of ALL_STATUSES) {
+    const zone = document.getElementById(`col-${status}`);
+    zone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      zone.classList.add("drag-over");
+    });
+    zone.addEventListener("dragleave", () => zone.classList.remove("drag-over"));
+    zone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      zone.classList.remove("drag-over");
+      const id = e.dataTransfer.getData("text/plain");
+      if (id) setStatus(id, status);
+      render();
+    });
+  }
+
+  const hiddenToggle = document.getElementById("hidden-toggle");
+  hiddenToggle.addEventListener("click", () => {
+    hiddenOpen = !hiddenOpen;
+    document.getElementById("hidden-body").hidden = !hiddenOpen;
+    document.getElementById("hidden-arrow").textContent = hiddenOpen ? "▼" : "▶";
+    hiddenToggle.setAttribute("aria-expanded", String(hiddenOpen));
+  });
+
+  // ---- Tailored CV (one version per backend, compared side by side) ----------
+  const cvModal = { jobId: "", slug: "", versions: [], backend: null, view: "cv" };
+
+  function currentCvMarkdown() {
+    const v = cvModal.versions.find((x) => x.backend === cvModal.backend);
+    if (!v || !v.ok) return null;
+    return { text: cvModal.view === "cv" ? v.cvMarkdown : v.matchMarkdown, backend: v.backend };
+  }
+
+  function openCvModal(id, slug, versions) {
+    cvModal.jobId = id || "";
+    cvModal.slug = slug || "";
+    cvModal.versions = versions || [];
+    const firstOk = cvModal.versions.find((v) => v.ok);
+    cvModal.backend = (firstOk || cvModal.versions[0] || {}).backend || null;
+    cvModal.view = "cv";
+    const job = state.jobs.find((j) => j.id === id);
+    document.getElementById("cv-modal-title").textContent =
+      "CV — " + (job ? `${job.title}${job.company ? " · " + job.company : ""}` : id);
+    const okN = cvModal.versions.filter((v) => v.ok).length;
+    document.getElementById("cv-modal-note").textContent =
+      `${okN}/${cvModal.versions.length} versions · job-watcher/data/cv/${slug || ""}/ · not sent anywhere.`;
+    renderBackendTabs();
+    renderCvBody();
+    document.querySelectorAll('.modal-tabs .tab[data-view]').forEach((b) =>
+      b.classList.toggle("active", b.dataset.view === "cv")
+    );
+    document.getElementById("cv-modal").hidden = false;
+  }
+
+  async function generateCvFor(id, btn, force) {
+    const label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "Generating…";
+    try {
+      const res = await fetch("/api/cv", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, force: !!force }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+      // bind the CV to this card so it survives reloads
+      cvIndex[id] = {
+        slug: data.slug,
+        generatedAt: new Date().toISOString(),
+        versions: (data.versions || []).map((v) => ({ backend: v.backend, ok: v.ok, cached: v.cached })),
+      };
+      render();
+      openCvModal(id, data.slug, data.versions);
+    } catch (err) {
+      alert("CV generation failed: " + err.message);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  }
+
+  async function viewCvFor(id, btn) {
+    const entry = cvIndex[id];
+    if (!entry) return generateCvFor(id, btn, false);
+    const label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "Loading…";
+    try {
+      const res = await fetch("/api/cv?slug=" + encodeURIComponent(entry.slug));
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+      openCvModal(id, data.slug, data.versions);
+    } catch (err) {
+      alert("Could not load CV: " + err.message + "\nTry regenerating (↻).");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  }
+
+  function renderBackendTabs() {
+    const el = document.getElementById("cv-backend-tabs");
+    el.innerHTML = cvModal.versions
+      .map((v) => {
+        const tag = !v.ok ? " ⚠" : v.cached ? " · cached" : v.ms ? ` · ${Math.round(v.ms / 1000)}s` : "";
+        const cls = "tab" + (v.backend === cvModal.backend ? " active" : "") + (v.ok ? "" : " err");
+        return `<button type="button" class="${cls}" data-backend="${escapeHtml(v.backend)}">${escapeHtml(v.backend)}${tag}</button>`;
+      })
+      .join("");
+    el.querySelectorAll("button[data-backend]").forEach((b) =>
+      b.addEventListener("click", () => {
+        cvModal.backend = b.dataset.backend;
+        renderBackendTabs();
+        renderCvBody();
+      })
+    );
+  }
+
+  function showCvView(view) {
+    cvModal.view = view;
+    document.querySelectorAll('.modal-tabs .tab[data-view]').forEach((b) =>
+      b.classList.toggle("active", b.dataset.view === view)
+    );
+    renderCvBody();
+  }
+
+  function renderCvBody() {
+    const v = cvModal.versions.find((x) => x.backend === cvModal.backend);
+    const body = document.getElementById("cv-modal-body");
+    if (!v) { body.innerHTML = ""; return; }
+    if (!v.ok) {
+      body.innerHTML = `<p class="err">${escapeHtml(v.backend)} failed:\n\n${escapeHtml(v.error || "unknown error")}</p>`;
+      return;
+    }
+    const md = cvModal.view === "cv" ? v.cvMarkdown : v.matchMarkdown || "_No match report._";
+    body.innerHTML = renderMarkdown(md || "");
+  }
+
+  // Small dependency-free markdown -> HTML: headings, bold/italic/code, lists,
+  // pipe tables, hr, paragraphs. Enough for the model's output.
+  function renderMarkdown(md) {
+    const esc = (s) => escapeHtml(s);
+    const inline = (s) =>
+      esc(s)
+        .replace(/`([^`]+)`/g, "<code>$1</code>")
+        .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+        .replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<em>$2</em>")
+        .replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    const lines = md.replace(/\r/g, "").split("\n");
+    const out = [];
+    let i = 0;
+    while (i < lines.length) {
+      const line = lines[i];
+      if (/^\s*$/.test(line)) { i++; continue; }
+      if (/^#{1,6}\s/.test(line)) {
+        const n = line.match(/^#+/)[0].length;
+        out.push(`<h${n}>${inline(line.replace(/^#+\s/, ""))}</h${n}>`);
+        i++; continue;
+      }
+      if (/^(-{3,}|\*{3,}|_{3,})\s*$/.test(line)) { out.push("<hr>"); i++; continue; }
+      if (/^\s*\|.*\|\s*$/.test(line) && /^\s*\|[\s:|-]+\|\s*$/.test(lines[i + 1] || "")) {
+        const cells = (r) => r.trim().replace(/^\||\|$/g, "").split("|").map((c) => c.trim());
+        const head = cells(line);
+        i += 2;
+        const rows = [];
+        while (i < lines.length && /^\s*\|.*\|\s*$/.test(lines[i])) { rows.push(cells(lines[i])); i++; }
+        out.push(
+          "<table><thead><tr>" + head.map((c) => `<th>${inline(c)}</th>`).join("") +
+          "</tr></thead><tbody>" +
+          rows.map((r) => "<tr>" + r.map((c) => `<td>${inline(c)}</td>`).join("") + "</tr>").join("") +
+          "</tbody></table>"
+        );
+        continue;
+      }
+      if (/^\s*([-*+]|\d+\.)\s/.test(line)) {
+        const ordered = /^\s*\d+\.\s/.test(line);
+        const items = [];
+        while (i < lines.length && /^\s*([-*+]|\d+\.)\s/.test(lines[i])) {
+          items.push(inline(lines[i].replace(/^\s*([-*+]|\d+\.)\s/, "")));
+          i++;
+        }
+        out.push(`<${ordered ? "ol" : "ul"}>` + items.map((t) => `<li>${t}</li>`).join("") + `</${ordered ? "ol" : "ul"}>`);
+        continue;
+      }
+      const para = [];
+      while (i < lines.length && !/^\s*$/.test(lines[i]) && !/^#{1,6}\s|^\s*\||^\s*([-*+]|\d+\.)\s/.test(lines[i])) {
+        para.push(lines[i]); i++;
+      }
+      out.push(`<p>${inline(para.join(" "))}</p>`);
+    }
+    return out.join("\n");
+  }
+
+  document.querySelectorAll('.modal-tabs .tab[data-view]').forEach((b) =>
+    b.addEventListener("click", () => showCvView(b.dataset.view))
+  );
+  document.getElementById("cv-close").addEventListener("click", () => {
+    document.getElementById("cv-modal").hidden = true;
+  });
+  document.getElementById("cv-modal").addEventListener("click", (e) => {
+    if (e.target.id === "cv-modal") e.currentTarget.hidden = true;
+  });
+  document.getElementById("cv-copy").addEventListener("click", async () => {
+    const cur = currentCvMarkdown();
+    if (!cur) return;
+    try {
+      await navigator.clipboard.writeText(cur.text || "");
+      const b = document.getElementById("cv-copy");
+      const t = b.textContent; b.textContent = "Copied"; setTimeout(() => (b.textContent = t), 1200);
+    } catch { alert("Clipboard blocked — use Download .md, or the file is on disk under data/cv/."); }
+  });
+
+  function getCvExportInfo() {
+    const cur = currentCvMarkdown();
+    if (!cur || !cur.text) return null;
+    const job = state.jobs.find((j) => j.id === cvModal.jobId) || {};
+    const nameMatch = cur.text.match(/^#\s+([^\n#]+)/m);
+    const candidateName = nameMatch ? nameMatch[1].trim() : "Olexandr Tantsiura";
+    const safeCandidate = candidateName.replace(/[^a-zA-Z0-9_-]+/g, "_").replace(/^_+|_+$/g, "") || "Olexandr_Tantsiura";
+    const safeCompany = (job.company || "").replace(/[^a-zA-Z0-9_-]+/g, "_").replace(/^_+|_+$/g, "");
+
+    let filename = "";
+    let docTitle = "";
+    if (cvModal.view === "cv") {
+      filename = safeCompany ? `${safeCandidate}_CV_${safeCompany}.md` : `${safeCandidate}_CV.md`;
+      docTitle = `${candidateName} — CV${job.company ? ` — ${job.company}` : ""}`;
+    } else {
+      filename = safeCompany ? `Match_Report_${safeCompany}.md` : `Match_Report.md`;
+      docTitle = `Match Report — ${job.title ? `${job.title}${job.company ? " · " + job.company : ""}` : "Job"}`;
+    }
+    return { filename, docTitle, text: cur.text };
+  }
+
+  document.getElementById("cv-download").addEventListener("click", () => {
+    const info = getCvExportInfo();
+    if (!info) return;
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([info.text], { type: "text/markdown" }));
+    a.download = info.filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+
+  const PDF_CSS = `
+    @page { size: A4; margin: 18mm 16mm; }
+    body { font: 13px/1.55 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #111; max-width: 720px; margin: 0 auto; padding: 24px; }
+    h1 { font-size: 20px; margin: 0 0 4px; }
+    h2 { font-size: 15px; margin: 18px 0 6px; border-bottom: 1px solid #ddd; padding-bottom: 2px; }
+    h3 { font-size: 13px; margin: 12px 0 4px; }
+    p, li { margin: 4px 0; } ul, ol { margin: 4px 0 4px 20px; padding: 0; }
+    table { border-collapse: collapse; width: 100%; font-size: 12px; margin: 8px 0; }
+    th, td { border: 1px solid #ccc; padding: 4px 6px; text-align: left; vertical-align: top; }
+    code { background: #f3f3f3; padding: 0 3px; border-radius: 3px; }
+    hr { border: 0; border-top: 1px solid #ddd; margin: 14px 0; }
+    h1, h2, h3 { break-after: avoid; } tr, li { break-inside: avoid; }
+    @media print { body { padding: 0; } a { color: #111; text-decoration: none; } }`;
+
+  document.getElementById("cv-pdf").addEventListener("click", () => {
+    const info = getCvExportInfo();
+    if (!info) return;
+    const w = window.open("", "_blank");
+    if (!w) { alert("Pop-up blocked — allow pop-ups for localhost to export a PDF."); return; }
+    w.document.write(
+      `<!doctype html><html><head><meta charset="utf-8"><title>${escapeHtml(info.docTitle)}</title>` +
+      `<style>${PDF_CSS}</style></head><body>${renderMarkdown(info.text)}</body></html>`
+    );
+    w.document.close();
+    w.focus();
+    const go = () => { try { w.print(); } catch {} };
+    if (w.document.readyState === "complete") setTimeout(go, 250);
+    else w.onload = () => setTimeout(go, 250);
+  });
+
   document.getElementById("refresh").addEventListener("click", refresh);
   document.getElementById("search").addEventListener("input", render);
   document.getElementById("newOnly").addEventListener("change", render);
+
+  const minSkillsEl = document.getElementById("minSkills");
+  const sortSkillEl = document.getElementById("sortSkill");
+  minSkillsEl.value = localStorage.getItem(MIN_SKILLS_KEY) || "0";
+  sortSkillEl.checked = localStorage.getItem(SORT_SKILL_KEY) === "1";
+  minSkillsEl.addEventListener("input", () => {
+    localStorage.setItem(MIN_SKILLS_KEY, String(Math.max(0, parseInt(minSkillsEl.value, 10) || 0)));
+    render();
+  });
+  sortSkillEl.addEventListener("change", () => {
+    localStorage.setItem(SORT_SKILL_KEY, sortSkillEl.checked ? "1" : "0");
+    render();
+  });
 
   loadJobs();
   setInterval(refresh, AUTO_REFRESH_MS);

@@ -63,6 +63,8 @@ export async function fetchDou({ categories }) {
         url: item.link.split("?")[0],
         postedAt: item.pubDate ? new Date(item.pubDate).toISOString() : null,
         matchedOn: category,
+        // RSS carries a short teaser; job-detail.mjs upgrades it to the full text.
+        description: item.description || "",
       });
     }
   }
@@ -97,6 +99,8 @@ export async function fetchRemoteOk({ tags }) {
       url: item.url || `https://remoteok.com/remote-jobs/${item.id}`,
       postedAt: item.date ? new Date(item.date).toISOString() : null,
       matchedOn: matched,
+      // RemoteOK's API returns the full HTML description inline — no extra fetch needed.
+      description: item.description || "",
     });
   }
   return dedupeById(jobs);
@@ -129,6 +133,8 @@ export async function fetchWeWorkRemotely({ categories, keywords }) {
         url: item.link,
         postedAt: item.pubDate ? new Date(item.pubDate).toISOString() : null,
         matchedOn: matched,
+        // WWR's RSS <description> is the full posting HTML.
+        description: item.description || "",
       });
     }
   }
